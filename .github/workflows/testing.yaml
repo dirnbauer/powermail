@@ -26,9 +26,9 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - 8.2
           - 8.3
           - 8.4
+          - 8.5
   typoscript-lint:
     name: "TypoScript linter"
     runs-on: ubuntu-24.04
@@ -38,7 +38,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.4
       - name: "Composer Install"
         run: "composer install"
       - name: "Run typoscript lint"
@@ -53,7 +53,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.4
       - name: "Composer Install"
         run: "composer install"
       - name: "Run PHP CS Fixer"
@@ -68,7 +68,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
+          php-version: 8.4
       - name: "Composer Install"
         run: "composer install"
       - name: "Run PHPstan"
@@ -94,6 +94,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - 8.2
           - 8.3
           - 8.4
+          - 8.5
