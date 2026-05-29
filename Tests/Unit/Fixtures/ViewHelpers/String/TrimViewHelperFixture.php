@@ -17,7 +17,7 @@ class TrimViewHelperFixture extends TrimViewHelper
     /**
      * @return string
      */
-    public function renderChildren()
+    public function renderChildren(): mixed
     {
         return $this->renderChildrenString;
     }

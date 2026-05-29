@@ -202,7 +202,7 @@ class PrefillFieldViewHelperTest extends UnitTestCase
             $field->_setProperty($name, $value);
         }
 
-        $this->abstractValidationViewHelperMock->_set('contentObject', new ContentObjectRenderer());
+        $this->abstractValidationViewHelperMock->_set('contentObject', $this->createMock(ContentObjectRenderer::class));
         $this->abstractValidationViewHelperMock->_set('variables', $variables);
         $this->abstractValidationViewHelperMock->_set('configuration', $configuration);
         $this->abstractValidationViewHelperMock->_set('field', $field);

@@ -26,7 +26,7 @@ class AbstractValidationViewHelperTest extends UnitTestCase
 
     public function tearDown(): void
     {
-        unset($this->generalValidatorMock);
+        unset($this->abstractValidationViewHelperMock);
     }
 
     /**
