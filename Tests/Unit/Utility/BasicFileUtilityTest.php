@@ -14,10 +14,22 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  */
 class BasicFileUtilityTest extends UnitTestCase
 {
+    private const FIXTURE_DIRECTORY = 'fileadmin/basic-file-utility/';
+
     public function setUp(): void
     {
         parent::setUp();
         TestingHelper::setDefaultConstants();
+    }
+
+    public function tearDown(): void
+    {
+        $fixturePath = TestingHelper::getWebRoot() . self::FIXTURE_DIRECTORY;
+        if (is_dir($fixturePath)) {
+            GeneralUtility::rmdir($fixturePath, true);
+        }
+
+        parent::tearDown();
     }
 
     /**
@@ -26,7 +38,12 @@ class BasicFileUtilityTest extends UnitTestCase
      */
     public function getFilesFromRelativePathReturnsString(): void
     {
-        $result = BasicFileUtility::getFilesFromRelativePath('typo3/');
+        $fixturePath = TestingHelper::getWebRoot() . self::FIXTURE_DIRECTORY;
+        BasicFileUtility::createFolderIfNotExists($fixturePath);
+        GeneralUtility::writeFile($fixturePath . 'index.php', '');
+        GeneralUtility::writeFile($fixturePath . 'install.php', '');
+
+        $result = BasicFileUtility::getFilesFromRelativePath(self::FIXTURE_DIRECTORY);
         self::assertSame(['index.php', 'install.php'], $result);
     }
 
