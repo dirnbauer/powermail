@@ -59,7 +59,7 @@ $changeSettings = [
         'clearCacheSystem' => 1,
         'curlUse' => 1,
         'exceptionalErrors' => '28674',
-        'trustedHostsPattern' => '.*.*',
+        'trustedHostsPattern' => '(?:powermail-v14\\.ddev\\.site|localhost|127\\.0\\.0\\.1)',
     ],
 ];
 

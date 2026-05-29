@@ -4,7 +4,7 @@ return [
         'debug' => true,
         'installToolPassword' => '$argon2i$v=19$m=65536,t=16,p=1$M2Rma0QvWDhuZWlubjNmaw$GNQhyTx+WUwjV0EuzRII4KuIf9l6mI8aRR5L7ec7xas',
         'passwordHashing' => [
-            'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
+            'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2idPasswordHash',
             'options' => [],
         ],
     ],
@@ -62,7 +62,7 @@ return [
     'FE' => [
         'debug' => true,
         'passwordHashing' => [
-            'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2iPasswordHash',
+            'className' => 'TYPO3\\CMS\\Core\\Crypto\\PasswordHashing\\Argon2idPasswordHash',
             'options' => [],
         ],
     ],
@@ -129,6 +129,6 @@ return [
         'systemMaintainers' => [
             1,
         ],
-        'trustedHostsPattern' => '.*.*',
+        'trustedHostsPattern' => '(?:powermail-v14\\.ddev\\.site|localhost|127\\.0\\.0\\.1)',
     ],
 ];
