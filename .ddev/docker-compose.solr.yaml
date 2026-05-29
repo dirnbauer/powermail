@@ -1,0 +1,23 @@
+#ddev-generated
+services:
+  solr:
+    container_name: ddev-${DDEV_SITENAME}-solr
+    image: typo3solr/ext-solr:14.0.x-dev
+    restart: "no"
+    expose:
+      - "8983"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: ${DDEV_APPROOT}
+    environment:
+      VIRTUAL_HOST: $DDEV_HOSTNAME
+      HTTP_EXPOSE: "8983"
+      HTTPS_EXPOSE: "8984:8983"
+    volumes:
+      - solr:/var/solr
+    networks:
+      - default
+      - ddev_default
+
+volumes:
+  solr:

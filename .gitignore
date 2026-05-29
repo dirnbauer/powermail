@@ -27,6 +27,7 @@ config/
 !.ddev/typo3/additional.php
 !.ddev/typo3/settings.php
 !.ddev/typo3/config.yaml
+!.ddev/docker-compose.solr.yaml
 /.phpunit.result.cache
 /phpunit.xml.dist.bak
 
