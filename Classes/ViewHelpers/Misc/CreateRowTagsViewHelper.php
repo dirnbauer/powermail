@@ -28,7 +28,7 @@ class CreateRowTagsViewHelper extends AbstractViewHelper
     /**
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         return self::renderStatic(
             $this->arguments,

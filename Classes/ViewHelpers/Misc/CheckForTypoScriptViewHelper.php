@@ -23,24 +23,36 @@ class CheckForTypoScriptViewHelper extends AbstractViewHelper
         $this->registerArgument('settings', 'array', 'settings array', true);
     }
 
+    public function render(): string
+    {
+        $this->addMissingTypoScriptFlashMessage($this->arguments['settings'] ?? []);
+        return '';
+    }
+
     public static function renderStatic(
         array $arguments,
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): void {
-        $argumentsSettings = $arguments['settings'] ?? [];
-        if (($argumentsSettings['staticTemplate'] ?? 1) !== '1') {
-            $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
-            /** @var FlashMessageQueue $flashMessageQueue */
-            $flashMessageQueue = $flashMessageService->getMessageQueueByIdentifier('extbase.flashmessages.tx_powermail_pi1');
-            /** @var FlashMessage $flashMessage */
-            $flashMessage = GeneralUtility::makeInstance(
-                FlashMessage::class,
-                LocalizationUtility::translate('error_no_typoscript'),
-                '',
-                \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR
-            );
-            $flashMessageQueue->addMessage($flashMessage);
+        self::addMissingTypoScriptFlashMessage($arguments['settings'] ?? []);
+    }
+
+    protected static function addMissingTypoScriptFlashMessage(array $settings): void
+    {
+        if (($settings['staticTemplate'] ?? 1) === '1') {
+            return;
         }
+
+        $flashMessageService = GeneralUtility::makeInstance(FlashMessageService::class);
+        /** @var FlashMessageQueue $flashMessageQueue */
+        $flashMessageQueue = $flashMessageService->getMessageQueueByIdentifier('extbase.flashmessages.tx_powermail_pi1');
+        /** @var FlashMessage $flashMessage */
+        $flashMessage = GeneralUtility::makeInstance(
+            FlashMessage::class,
+            LocalizationUtility::translate('error_no_typoscript'),
+            '',
+            \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR
+        );
+        $flashMessageQueue->addMessage($flashMessage);
     }
 }

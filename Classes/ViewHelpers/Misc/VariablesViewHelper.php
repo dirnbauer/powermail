@@ -9,7 +9,6 @@ use In2code\Powermail\Domain\Service\ConfigurationService;
 use In2code\Powermail\Utility\ArrayUtility;
 use In2code\Powermail\Utility\TemplateUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\Core\Rendering\RenderingContext;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
@@ -32,11 +31,6 @@ class VariablesViewHelper extends AbstractViewHelper
      * Configuration
      */
     protected array $settings = [];
-
-    /**
-     * @var RenderingContext
-     */
-    protected $renderingContext;
 
     public function initializeArguments(): void
     {
@@ -74,7 +68,7 @@ class VariablesViewHelper extends AbstractViewHelper
      *
      * @return mixed The finally rendered child nodes.
      */
-    public function renderChildren()
+    public function renderChildren(): mixed
     {
         $content = parent::renderChildren();
         return str_replace('-&gt;', '->', $content);

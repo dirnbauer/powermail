@@ -28,6 +28,11 @@ abstract class AbstractValidationViewHelper extends AbstractViewHelper
 
     protected string $extensionName = '';
 
+    public function render(): mixed
+    {
+        return null;
+    }
+
     /**
      * Check if native validation is activated
      */
