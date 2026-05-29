@@ -20,8 +20,8 @@ return RectorConfig::configure()
     ])
     // uncomment to reach your current PHP version
     // ->withPhpSets()
-    ->withPhpVersion(PhpVersion::PHP_82)
-    ->withPhpSets(php82: true)
+    ->withPhpVersion(PhpVersion::PHP_84)
+    ->withPhpSets(php84: true)
     ->withSets([
         SetList::DEAD_CODE,
         SetList::EARLY_RETURN,
@@ -33,9 +33,10 @@ return RectorConfig::configure()
         SetList::PHP_81,
         SetList::PHP_82,
         SetList::PHP_83,
+        SetList::PHP_84,
         Typo3SetList::CODE_QUALITY,
         Typo3SetList::GENERAL,
-        Typo3LevelSetList::UP_TO_TYPO3_13,
+        Typo3LevelSetList::UP_TO_TYPO3_14,
     ])
     # To have a better analysis from PHPStan, we teach it here some more things
     ->withPHPStanConfigs([
@@ -46,8 +47,8 @@ return RectorConfig::configure()
         ConvertImplicitVariablesToExplicitGlobalsRector::class,
     ])
     ->withConfiguredRule(ExtEmConfRector::class, [
-        ExtEmConfRector::PHP_VERSION_CONSTRAINT => '8.2.0-8.4.99',
-        ExtEmConfRector::TYPO3_VERSION_CONSTRAINT => '13.4.0-13.4.99',
+        ExtEmConfRector::PHP_VERSION_CONSTRAINT => '8.3.0-8.5.99',
+        ExtEmConfRector::TYPO3_VERSION_CONSTRAINT => '14.3.0-14.99.99',
         ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => []
     ])
     # If you use withImportNames(), you should consider excluding some TYPO3 files.
