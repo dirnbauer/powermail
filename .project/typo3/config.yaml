@@ -1,4 +1,8 @@
-base: 'https://powermail-v13.ddev.site/'
+base: 'https://powermail-v14.ddev.site/'
+dependencies:
+  - in2code/powermail-main
+  - in2code/powermail-marketing
+  - in2code/powermail-styling
 languages:
   -
     title: deutsch

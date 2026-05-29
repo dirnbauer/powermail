@@ -1,0 +1,65 @@
+services:
+  TYPO3\CMS\Core\Database\ConnectionPool:
+    public: true
+    arguments:
+      $defaultRestrictionContainer: TYPO3\CMS\Core\Database\Query\Restriction\DefaultRestrictionContainer
+
+  TYPO3\CMS\Core\Site\Set\SetCollector:
+    public: true
+
+  TYPO3\CMS\Core\Configuration\Tca\TcaFactory:
+    public: true
+    arguments:
+      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
+      $eventDispatcher: '@Psr\EventDispatcher\EventDispatcherInterface'
+      $codeCache: '@cache.core'
+
+  TYPO3\CMS\Core\Configuration\Extension\ExtLocalconfFactory:
+    public: true
+    arguments:
+      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
+      $codeCache: '@cache.core'
+
+  TYPO3\CMS\Core\Configuration\Extension\ExtTablesFactory:
+    public: true
+    arguments:
+      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
+      $codeCache: '@cache.core'
+
+  TYPO3\CMS\Core\Package\Cache\PackageDependentCacheIdentifier:
+    public: true
+    arguments:
+      $packageManager: '@TYPO3\CMS\Core\Package\PackageManager'
+
+  package-dependent-cache-identifier:
+    alias: TYPO3\CMS\Core\Package\Cache\PackageDependentCacheIdentifier
+    public: true
+
+  TYPO3\CMS\Core\Schema\TcaSchemaFactory:
+    public: true
+    arguments:
+      $schemaBuilder: '@TYPO3\CMS\Core\Schema\TcaSchemaBuilder'
+      $cacheIdentifier: '@=service("package-dependent-cache-identifier").withPrefix("TcaSchema").toString()'
+      $cache: '@cache.core'
+
+  TYPO3\CMS\Core\Schema\TcaSchemaBuilder:
+    arguments:
+      $relationMapBuilder: '@TYPO3\CMS\Core\Schema\RelationMapBuilder'
+      $fieldTypeFactory: '@TYPO3\CMS\Core\Schema\FieldTypeFactory'
+
+  TYPO3\CMS\Core\Schema\RelationMapBuilder:
+    arguments:
+      $flexFormTools: '@TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools'
+
+  TYPO3\CMS\Core\Schema\FieldTypeFactory:
+
+  TYPO3\CMS\Core\Configuration\FlexForm\FlexFormTools:
+    public: true
+    arguments:
+      $eventDispatcher: '@Psr\EventDispatcher\EventDispatcherInterface'
+      $tcaMigration: '@TYPO3\CMS\Core\Configuration\Tca\TcaMigration'
+      $tcaPreparation: '@TYPO3\CMS\Core\Configuration\Tca\TcaPreparation'
+
+  TYPO3\CMS\Core\Configuration\Tca\TcaMigration:
+
+  TYPO3\CMS\Core\Configuration\Tca\TcaPreparation:
