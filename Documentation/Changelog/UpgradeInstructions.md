@@ -1,5 +1,19 @@
 # Upgrade Instructions and breaking changes
 
+## Version 14.0.0
+
+### Breaking Changes
+
+#### TYPO3 14 only
+
+Powermail 14 supports TYPO3 14.3 and newer only. TYPO3 13 support was removed completely. Use the powermail 13 branch
+for TYPO3 13 projects.
+
+#### Site sets
+
+TYPO3 14 installations should configure powermail through site sets. Remove static TypoScript template inclusions and
+add the matching powermail site set(s) to your site configuration.
+
 ## Version 13.0.0
 
 ### Breaking Changes

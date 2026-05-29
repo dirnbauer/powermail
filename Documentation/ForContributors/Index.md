@@ -2,7 +2,7 @@
 
 If you want to contribute to the TYPO3 extension powermail, you are very welcome.
 
-To make it easier to contribute, we provide a ddev enviroment, with a complete TYPO3 setup and ready to
+To make it easier to contribute, we provide a DDEV environment with PHP 8.4, TYPO3 14 and a complete TYPO3 setup ready to
 use.
 
 ## Prerequisites
@@ -18,8 +18,8 @@ use.
 
 Now you will be able to work with the website
 
-Frontend: https://powermail-<TYPO3-version>.ddev.site/ \
-Backend: https://powermail-<TYPO3-version>.ddev.site/typo3
+Frontend: https://powermail-v14.ddev.site/ \
+Backend: https://powermail-v14.ddev.site/typo3
 
 Username: admin \
 Password: password
@@ -33,18 +33,17 @@ There are several test types preconfigured in EXT:powermail. These are
 - phpstan
 - php unit test
 
-All can be triggered locally via `composer`.
+All can be triggered locally via `composer` or the project test runner.
 
 ```bash
 ddev exec composer run test:php:phpstan
+ddev exec Build/Scripts/runTests.sh -s ci -p 8.4
 ```
 
 ### PHPstan: Update baseline
 
-As the time of this writing (while introducing phpstan in Sept. 2024), there are slightly over 1000 issues in the
-phpstan base. (Hopefully) They will be reduced, in future development. If you fixed one or more of them, it will be
-reported in the github pipeline or locally. If done so, they must be removed from the baseline with the following
-command.
+PHPStan runs at level max. The baseline contains existing strictness debt and should shrink whenever related code is
+touched. If you fixed one or more reported issues, regenerate the baseline with the following command.
 
 ```bash
 ddev exec composer run test:php:phpstan:generate-baseline

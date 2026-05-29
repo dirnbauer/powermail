@@ -36,7 +36,25 @@ Main configuration for powermail for CMS wide settings.
 | Enable Merge for l10n_mode              | All fields with l10n_mode exclude should change their translation behaviour to mergeIfNotBlank. This allows you to have different field values in different languages.                                                                                    | 0             |
 | ElementBrowser replaces IRRE            | Editors can add pages within a form table via IRRE. If this checkbox is enabled, an element browser replaces the IRRE Relation. Note: this is a beta-feature and not completely tested!                                                                   | 0             |
 
+## Site sets
+
+Add the powermail site set to your site configuration. This is the supported configuration path for TYPO3 14.
+
+Powermail provides these site sets:
+
+- `in2code/powermail-main`
+- `in2code/powermail-marketing`
+- `in2code/powermail-styling`
+
+### Migration from TypoScript templates
+
+For TYPO3 14, remove the old static TypoScript template inclusions and add the matching site set(s) instead.
+If you customized TypoScript constants, migrate them to site settings. The setting names intentionally follow the
+previous constant names.
+
 ## Static Templates
+
+Static templates are kept only for legacy/classic setups. New TYPO3 14 projects should use site sets.
 
 Add powermail static templates for full functions
 
@@ -51,28 +69,6 @@ Add powermail static templates for full functions
 
 **Note** TypoScript can be modified to configure powermail in the way you want to use powermail.
 See BestPractice/MainTypoScript for an overview over the complete TypoScript.
-
-## Site sets
-
-Since version 13 Powermail provides two sets of site sets for all TypoScript templates:
-- one site set as a drop-in, that reflects the current typoscript template behavior
-- one site set as a future-proof siteset, that replaces typoscript constants with `settings.definitions.yaml`.
-
-### Migration
-
-#### DropIn - SiteSet
-
-For the drop-in site set, you just need remove the inclusion of the TypoScript template and add the SiteSet to your
-installation. No other steps need to be done.
-
-#### Future-proof SiteSet
-
-For this site-set there are some more steps to perform.
-
-- remove the inclusion of the typoscript template
-- add the necessary site set(s) without the "DropIn" prefix to your site
-- migrate TypoScript constants to your site settings. All constant names remain the same.
-
 
 ## Default classes
 

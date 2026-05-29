@@ -1,7 +1,7 @@
 # Changelog
 
 **Note 1:** \
-This document is not updated after the v13 release anymore. For details please have a look at
+This document is not updated after the v14 release anymore. For details please have a look at
 * https://extensions.typo3.org/extension/powermail
 * https://github.com/in2code-de/powermail/releases
 * https://github.com/in2code-de/powermail/tags
@@ -13,6 +13,7 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 
 | Version         | Release Date | Description                                                                                                                                                                                                           |
 |-----------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [!!!] 14.0.0    | 2026-05-29   | TYPO3 14.3+ only, PHP 8.3-8.5 support, TYPO3 13 support dropped, site sets are the supported configuration path, DDEV/PHPStan/tooling updated.                                                                        |
 | [!!!] 13.0.0    | 2025-07-11   | Public support for TYPO3 13  (via EAP available sind Nov. 2024)                                                                                                                                                       |
 | 12.4.3          | 2024-10-16   | Bugfix release for EXT:powermail v12; TYPO3 v13 compatibility work starts today :-)                                                                                                                                   |
 | 12.4.2          | 2024-10-02   | Major bugfix release for EXT:powermail v12                                                                                                                                                                            |

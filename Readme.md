@@ -10,7 +10,6 @@ features (spam prevention, marketing information, optin, ajax submit, diagram an
 * [Documentation for editors](/Documentation/ForEditors/Index.md)
 * [Documentation for administrators](/Documentation/ForAdministrators/Index.md)
 * [Documentation for developers](/Documentation/ForDevelopers/Index.md)
-* [Documentation for developers](/Documentation/ForDevelopers/Index.md)
 * [FAQ](/Documentation/FAQ/Index.md) (with a lot of stuff and best practice)
 * [Support](/Documentation/Support/Index.md)
 * [Additional links](/Documentation/Links/Index.md)
@@ -19,7 +18,7 @@ features (spam prevention, marketing information, optin, ajax submit, diagram an
 
 Quick guide:
 - Just install this extension - e.g. `composer require in2code/powermail`
-- Add a static typoscript template to your root template
+- Add the powermail site set to your TYPO3 site configuration
 - Add a new form (with one or more pages and with some fields to a page or a folder)
 - Add a new pagecontent (plugin) with type "powermail" and choose the former saved form
 - That's all, you can view the result in the frontend
@@ -30,7 +29,8 @@ Quick guide:
 
 | Powermail   | TYPO3     | PHP       | Support/Development                           |
 |-------------|-----------|-----------|-----------------------------------------------|
-| 13.x        | 13.x      | 8.3 - 8.x | Features, Bugfixes, Security Updates          |
+| 14.x        | 14.3+     | 8.3 - 8.5 | Features, Bugfixes, Security Updates          |
+| 13.x        | 13.x      | 8.3 - 8.x | Support dropped                               |
 | 12.x        | 12.x      | 8.1 - 8.2 | Bugfixes, Security Updates                    |
 | 11.x        | 12.x      | 8.1 - 8.2 | Support dropped                               |
 | 10.x        | 11.x      | 7.4 - 8.1 | Support dropped (paid backports are possible) |
@@ -91,7 +91,7 @@ technical debts, that have to be fixed step by step.
 Current quality tools are:
 
 - php-cs-fixer
-- phpstan (level 8)
+- phpstan (level max)
 - php linter
 - TypoScript linter
 

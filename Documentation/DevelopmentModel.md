@@ -17,10 +17,9 @@ to learn more about in2codes EAP program or have questions, please head over to
 
 | TYPO3 - compatibility                     | Support/Development                                                           | Example (TYPO3 version)     | Branch name          |
 |-------------------------------------------|-------------------------------------------------------------------------------|-----------------------------|----------------------|
-| upcoming TYPO3 LTS                        | Security, Bugfixes, Features, Breaking changes                                | v14                         | master               |
-| current TYPO3 LTS                         | Security, Bugfixes, Features, Breaking changes (until powermail release 13.0) | v13 (released October 2025) | master               |
-| old TYPO3 LTS (before EAP becomes public) | Security, Bugfixes, Features                                                  | v12 (until July 2025)       | typo3_v12            |
-| old TYPO3 LTS (after EAP becomes public)  | Security, Bugfixes                                                            | v12 (after July 2025)       | typo3_v12            |
+| current TYPO3 LTS                         | Security, Bugfixes, Features, Breaking changes                                | v14                         | master               |
+| old TYPO3 LTS (before EAP becomes public) | Security, Bugfixes, Features                                                  | v13                         | typo3-v13            |
+| old TYPO3 LTS (after EAP becomes public)  | Security, Bugfixes                                                            | v13                         | typo3-v13            |
 | TYPO3 ELTS                                | Security, Bugfixes (paid)                                                     | v11, v10, v09               | typo3_v11, typo3_v10 |
 
 ## Branching Model
@@ -29,7 +28,7 @@ The development for the youngest (or upcoming) TYPO3 LTS compatible version happ
 version has its own compatibility branch. The branch name has nothing to do with the powermail version.
 
 When the development for a recently published or upcoming TYPO3 LTS version starts a new branch for "LTS - 1" is
-created. For example, when the development for TYPO3 v13 compatibility starts, a new branch `typo3-v12` is created.
+created. For example, when the development for TYPO3 v14 compatibility starts, a new branch `typo3-v13` is created.
 At this moment this will be the default branch for the *public* repository "for the time being". The base of all open
 pull requests (against `master`) will be changed to the new branch by the maintainer.
 
@@ -51,6 +50,5 @@ The development for the upcoming compatibility release happens in branch `master
 
 When the EAP phase is over, the code of branch `master` will be pushed as is to the public repo (including tags) and
 also available via packagist and the TYPO3 TER.
-
 
 
