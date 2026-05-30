@@ -137,6 +137,7 @@ abstract class AbstractController extends ActionController
             $propertyMapping->forProperty('answers.' . $iteration)->allowAllProperties();
             $propertyMapping->allowCreationForSubProperty('answers.' . $iteration);
             $propertyMapping->allowModificationForSubProperty('answers.' . $iteration);
+            $propertyMapping->setTargetTypeForSubProperty('answers.' . $iteration . '.value', 'string');
 
             /** @var Field $field */
             $field = $this->fieldRepository->findByUid($fieldUid);

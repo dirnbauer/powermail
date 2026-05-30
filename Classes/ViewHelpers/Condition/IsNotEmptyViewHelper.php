@@ -14,7 +14,7 @@ class IsNotEmptyViewHelper extends AbstractViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerArgument('val', 'string', 'Value', true);
+        $this->registerArgument('val', 'mixed', 'Value', true);
     }
 
     public function render(): bool
