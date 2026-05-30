@@ -40,7 +40,7 @@
 					<f:comment>Basic form information</f:comment>
 					<tr class="{f:if(condition:iteration.isFirst,then:' firstcol')}{f:if(condition:iteration.isLast,then:' lastcol')}">
 						<td nowrap="nowrap" class="col-icon" title="id={form.uid}">
-							<core:Icon identifier="record-powermail-form" />
+							<core:iconForRecord table="tx_powermail_domain_model_form" row="{uid: form.uid, pid: form.pid}" alternativeMarkupIdentifier="inline" />
 						</td>
 						<td nowrap="nowrap">
                             <be:link.editRecord uid="{form.uid}" table="tx_powermail_domain_model_form">

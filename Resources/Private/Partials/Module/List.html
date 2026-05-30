@@ -81,10 +81,10 @@
 							</span>
 							<span class="powermailRecordIcon">
 								<span{f:if(condition:mail.hidden,then:' class="hide"')}>
-									<core:Icon identifier="record-powermail-mail" />
+									<core:iconForRecord table="tx_powermail_domain_model_mail" row="{uid: mail.uid, pid: mail.pid, hidden: 0}" alternativeMarkupIdentifier="inline" />
 								</span>
 								<span{f:if(condition:mail.hidden,else:' class="hide"')}>
-									<core:Icon identifier="record-powermail-mail" overlay="overlay-hidden" />
+									<core:iconForRecord table="tx_powermail_domain_model_mail" row="{uid: mail.uid, pid: mail.pid, hidden: 1}" alternativeMarkupIdentifier="inline" />
 								</span>
 							</span>
 						</td>
