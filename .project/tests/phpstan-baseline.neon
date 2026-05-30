@@ -5677,12 +5677,6 @@ parameters:
 			path: ../../Classes/Hook/PluginPreviewRenderer.php
 
 		-
-			message: '#^Cannot access offset ''CType'' on TYPO3\\CMS\\Core\\Domain\\RecordInterface\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
 			message: '#^Cannot access offset ''email'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -5710,12 +5704,6 @@ parameters:
 			message: '#^Cannot access offset ''main'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
-			message: '#^Cannot access offset ''pi_flexform'' on TYPO3\\CMS\\Core\\Domain\\RecordInterface\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
 			path: ../../Classes/Hook/PluginPreviewRenderer.php
 
 		-
@@ -5812,12 +5800,6 @@ parameters:
 			message: '#^Parameter \#1 \$flexFormContent of method TYPO3\\CMS\\Core\\Configuration\\FlexForm\\FlexFormTools\:\:convertFlexFormContentToArray\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
-			message: '#^Parameter \#2 \$row of method In2code\\Powermail\\Hook\\PluginPreviewRenderer\:\:getPluginInformation\(\) expects array, TYPO3\\CMS\\Core\\Domain\\RecordInterface given\.$#'
-			identifier: argument.type
-			count: 4
 			path: ../../Classes/Hook/PluginPreviewRenderer.php
 
 		-

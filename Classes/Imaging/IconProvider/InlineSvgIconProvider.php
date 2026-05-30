@@ -9,6 +9,9 @@ use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 
 class InlineSvgIconProvider extends SvgIconProvider
 {
+    /**
+     * @param array<string, mixed> $options
+     */
     protected function generateMarkup(Icon $icon, array $options): string
     {
         return $this->generateInlineMarkup($options);
