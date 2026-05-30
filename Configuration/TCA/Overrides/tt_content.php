@@ -15,7 +15,7 @@ ExtensionUtility::registerPlugin(
     'powermail',
     'Pi1',
     'LLL:EXT:powermail/Resources/Private/Language/locallang_mod.xlf:powermail_pi1.title',
-    null,
+    'plugin-powermail-form',
     'powermail'
 );
 
@@ -48,7 +48,7 @@ $GLOBALS['TCA']['tt_content']['types']['powermail_pi1']['showitem'] = '
 $GLOBALS['TCA']['tt_content']['types']['powermail_pi1']['previewRenderer']
     = In2code\Powermail\Hook\PluginPreviewRenderer::class;
 
-$GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['powermail_pi1'] = 'extension-powermail-main';
+$GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['powermail_pi1'] = 'plugin-powermail-form';
 
 /**
  * Disable not needed fields in tt_content

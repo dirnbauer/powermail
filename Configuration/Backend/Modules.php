@@ -24,7 +24,7 @@ return [
         'parent' => 'web_powermail',
         'position' => [],
         'access' => 'user',
-        'iconIdentifier' => 'extension-powermail-main',
+        'iconIdentifier' => 'module-powermail-list',
         'labels' => [
             'title' => 'LLL:EXT:powermail/Resources/Private/Language/locallang.xlf:BackendSelectionList',
         ],
@@ -39,7 +39,7 @@ return [
         'parent' => 'web_powermail',
         'position' => ['after' => 'powermail_list'],
         'access' => 'user',
-        'iconIdentifier' => 'extension-powermail-main',
+        'iconIdentifier' => 'module-powermail-overview',
         'labels' => [
             'title' => 'LLL:EXT:powermail/Resources/Private/Language/locallang.xlf:BackendSelectionOverview',
         ],
@@ -53,7 +53,7 @@ return [
         'parent' => 'web_powermail',
         'position' => ['after' => 'powermail_overview_be'],
         'access' => 'user',
-        'iconIdentifier' => 'extension-powermail-main',
+        'iconIdentifier' => 'module-powermail-reporting-form',
         'labels' => [
             'title' => 'LLL:EXT:powermail/Resources/Private/Language/locallang.xlf:BackendSelectionReportingForm',
         ],
@@ -67,7 +67,7 @@ return [
         'parent' => 'web_powermail',
         'position' => ['after' => 'powermail_reporting_form'],
         'access' => 'user',
-        'iconIdentifier' => 'extension-powermail-main',
+        'iconIdentifier' => 'module-powermail-reporting-marketing',
         'labels' => [
             'title' => 'LLL:EXT:powermail/Resources/Private/Language/locallang.xlf:BackendSelectionReportingMarketing',
         ],
@@ -81,7 +81,7 @@ return [
         'parent' => 'web_powermail',
         'position' => ['after' => 'powermail_reporting_marketing'],
         'access' => 'admin',
-        'iconIdentifier' => 'extension-powermail-main',
+        'iconIdentifier' => 'module-powermail-check',
         'labels' => [
             'title' => 'LLL:EXT:powermail/Resources/Private/Language/locallang.xlf:BackendSelectionCheck',
         ],
