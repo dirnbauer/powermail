@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+		<path stroke="var(--icon-color-accent, #ff8700)" stroke-width="4" d="M14 52V12h34"/>
+		<path stroke="currentColor" stroke-width="4" d="M22 22h6v6h-6zM22 34h6v6h-6zM22 46h6v6h-6zM34 25h16M34 37h16M34 49h16"/>
+	</g>
+</svg>
