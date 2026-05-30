@@ -325,7 +325,7 @@ class SendMailService
      */
     protected function createEmailBody(array $email): string
     {
-        $standaloneView = TemplateUtility::getDefaultView();
+        $standaloneView = TemplateUtility::getDefaultView(request: $this->request);
         if ($standaloneView instanceof FluidViewAdapter) {
             $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(TemplateUtility::getTemplatePath($email['template'] . '.html'));
         }
@@ -346,8 +346,10 @@ class SendMailService
                 'settings' => $this->settings,
             ]
         );
-        if (!empty($email['variables'])) {
-            $standaloneView->assignMultiple($email['variables']);
+        if (!empty($email['variables']) && is_array($email['variables'])) {
+            /** @var array<string, mixed> $emailVariables */
+            $emailVariables = $email['variables'];
+            $standaloneView->assignMultiple($emailVariables);
         }
 
         /** @var SendMailServiceCreateEmailBodyEvent $event */

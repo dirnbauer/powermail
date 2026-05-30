@@ -289,12 +289,6 @@ parameters:
 			path: ../../Classes/Controller/FormController.php
 
 		-
-			message: '#^Parameter \#1 \$values of method TYPO3\\CMS\\Core\\View\\ViewInterface\:\:assignMultiple\(\) expects array\<string, mixed\>, array given\.$#'
-			identifier: argument.type
-			count: 2
-			path: ../../Classes/Controller/FormController.php
-
-		-
 			message: '#^Parameter \#2 \$string of static method TYPO3\\CMS\\Core\\Utility\\GeneralUtility\:\:intExplode\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 2
@@ -1663,25 +1657,13 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^Binary operation "\-" between mixed and 1 results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^Binary operation "\." between ''%%'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
-			count: 10
+			count: 3
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
 			message: '#^Binary operation "\." between ''SELECT MIN\(uid\) uid…'' and mixed results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Binary operation "\." between ''label_'' and mixed results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
@@ -1694,12 +1676,6 @@ parameters:
 
 		-
 			message: '#^Binary operation "\." between mixed and ''\.'' results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Binary operation "\." between mixed and ''_originalValue'' results in an error\.$#'
 			identifier: binaryOp.invalid
 			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
@@ -1723,18 +1699,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^Call to an undefined method object\:\:getOriginalValue\(\)\.$#'
-			identifier: method.notFound
-			count: 2
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Call to an undefined method object\:\:getStringValue\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^Call to an undefined method object\:\:getUid\(\)\.$#'
 			identifier: method.notFound
 			count: 2
@@ -1743,7 +1707,7 @@ parameters:
 		-
 			message: '#^Call to an undefined method object\:\:getValue\(\)\.$#'
 			identifier: method.notFound
-			count: 3
+			count: 2
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
@@ -1813,24 +1777,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^Cannot call method getMarker\(\) on class\-string\|object\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Cannot call method getMarker\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 2
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Cannot call method getTitle\(\) on class\-string\|object\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^Cannot call method isSenderEmail\(\) on mixed\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -1845,7 +1791,7 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to string\.$#'
 			identifier: cast.string
-			count: 3
+			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
@@ -1945,12 +1891,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:getLabelsWithMarkersFromMail\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:getSenderNameFromArguments\(\) has parameter \$default with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1964,12 +1904,6 @@ parameters:
 
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:getSorting\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:getVariablesWithMarkersFromMail\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
@@ -2005,12 +1939,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^PHPDoc tag @var has invalid value \(\$answer Answer\)\: Unexpected token "\$answer", expected type at offset 24 on line 2$#'
-			identifier: phpDoc.parseError
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^Parameter \#1 \$array of function array_reverse expects array, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -2026,12 +1954,6 @@ parameters:
 			message: '#^Parameter \#1 \$object_or_class of function method_exists expects object\|string, In2code\\Powermail\\Domain\\Model\\Field\|null given\.$#'
 			identifier: argument.type
 			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Parameter \#1 \$object_or_class of function method_exists expects object\|string, mixed given\.$#'
-			identifier: argument.type
-			count: 2
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
@@ -2092,12 +2014,6 @@ parameters:
 			message: '#^Parameter \#2 \$order of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:getSorting\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 2
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Possibly invalid array key type mixed\.$#'
-			identifier: offsetAccess.invalidOffset
-			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
@@ -2533,30 +2449,6 @@ parameters:
 			path: ../../Classes/Domain/Service/ExportService.php
 
 		-
-			message: '#^Call to method assign\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
 			message: '#^Cannot call method getFields\(\) on In2code\\Powermail\\Domain\\Model\\Form\|TYPO3\\CMS\\Extbase\\Persistence\\Generic\\LazyLoadingProxy\|null\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -2571,12 +2463,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:__construct\(\) has parameter \$mails with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
 			identifier: missingType.generics
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:createMailBody\(\) should return string but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
 
@@ -2601,12 +2487,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getFieldList\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getFileContent\(\) should return string but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
 
@@ -3133,30 +3013,6 @@ parameters:
 			path: ../../Classes/Domain/Service/Mail/SendMailService.php
 
 		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 4
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
-			message: '#^Call to method setRequest\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
 			message: '#^Cannot access offset ''BE'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -3277,12 +3133,6 @@ parameters:
 			path: ../../Classes/Domain/Service/Mail/SendMailService.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\Mail\\SendMailService\:\:createEmailBody\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\Mail\\SendMailService\:\:getConfiguration\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -3364,12 +3214,6 @@ parameters:
 			message: '#^PHPDoc tag @throws with type Exception\|TYPO3\\CMS\\Extbase\\Configuration\\Exception\\InvalidConfigurationTypeException is not subtype of Throwable$#'
 			identifier: throws.notThrowable
 			count: 5
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
-			message: '#^Parameter \#1 \$body of method In2code\\Powermail\\Domain\\Model\\Mail\:\:setBody\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
 			path: ../../Classes/Domain/Service/Mail/SendMailService.php
 
 		-
@@ -4657,24 +4501,6 @@ parameters:
 			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
 
 		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
-
-		-
 			message: '#^Cannot access offset ''_enable'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -4741,18 +4567,6 @@ parameters:
 			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShieldValidator\:\:createSpamNotificationMessage\(\) has parameter \$multipleAssign with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShieldValidator\:\:createSpamNotificationMessage\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShieldValidator\:\:getMessages\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -4760,12 +4574,6 @@ parameters:
 
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShieldValidator\:\:getSpamShieldMethodClasses\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShieldValidator\:\:getVariablesForSpamNotification\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../../Classes/Domain/Validator/SpamShieldValidator.php
@@ -5227,24 +5035,6 @@ parameters:
 			path: ../../Classes/Events/FormControllerOptinConfirmActionBeforeRenderViewEvent.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Events\\MailRepositoryGetVariablesWithMarkersFromMailEvent\:\:__construct\(\) has parameter \$variables with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Events/MailRepositoryGetVariablesWithMarkersFromMailEvent.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Events\\MailRepositoryGetVariablesWithMarkersFromMailEvent\:\:getVariables\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Events/MailRepositoryGetVariablesWithMarkersFromMailEvent.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Events\\MailRepositoryGetVariablesWithMarkersFromMailEvent\:\:setVariables\(\) has parameter \$variables with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Events/MailRepositoryGetVariablesWithMarkersFromMailEvent.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Events\\PrefillFieldViewHelperEvent\:\:__construct\(\) has parameter \$default with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -5305,32 +5095,8 @@ parameters:
 			path: ../../Classes/Events/SendMailServiceCreateEmailBodyEvent.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Events\\SendMailServiceCreateEmailBodyEvent\:\:getStandaloneView\(\) has invalid return type TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Events/SendMailServiceCreateEmailBodyEvent.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Events\\SendMailServiceCreateEmailBodyEvent\:\:setEmail\(\) has parameter \$email with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Events/SendMailServiceCreateEmailBodyEvent.php
-
-		-
-			message: '#^Parameter \$standaloneView of method In2code\\Powermail\\Events\\SendMailServiceCreateEmailBodyEvent\:\:__construct\(\) has invalid type TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Events/SendMailServiceCreateEmailBodyEvent.php
-
-		-
-			message: '#^Parameter \$standaloneView of method In2code\\Powermail\\Events\\SendMailServiceCreateEmailBodyEvent\:\:setStandaloneView\(\) has invalid type TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Events/SendMailServiceCreateEmailBodyEvent.php
-
-		-
-			message: '#^Property In2code\\Powermail\\Events\\SendMailServiceCreateEmailBodyEvent\:\:\$standaloneView has unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView as its type\.$#'
-			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Events/SendMailServiceCreateEmailBodyEvent.php
 
@@ -5911,24 +5677,6 @@ parameters:
 			path: ../../Classes/Hook/PluginPreviewRenderer.php
 
 		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
 			message: '#^Cannot access offset ''CType'' on TYPO3\\CMS\\Core\\Domain\\RecordInterface\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -6039,12 +5787,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Hook\\PluginPreviewRenderer\:\:getPluginInformation\(\) has parameter \$row with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Hook/PluginPreviewRenderer.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Hook\\PluginPreviewRenderer\:\:getPluginInformation\(\) should return string but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Hook/PluginPreviewRenderer.php
 
@@ -6355,24 +6097,6 @@ parameters:
 			path: ../../Classes/Tca/Marker.php
 
 		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteEditForm.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteEditForm.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteEditForm.php
-
-		-
 			message: '#^Cannot access offset ''data'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -6453,12 +6177,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Tca\\ShowFormNoteEditForm\:\:getFormProperties\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteEditForm.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Tca\\ShowFormNoteEditForm\:\:getHtml\(\) should return string but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Tca/ShowFormNoteEditForm.php
 
@@ -6547,24 +6265,6 @@ parameters:
 			path: ../../Classes/Tca/ShowFormNoteIfNoEmailOrNameSelected.php
 
 		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteIfNoEmailOrNameSelected.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteIfNoEmailOrNameSelected.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Tca/ShowFormNoteIfNoEmailOrNameSelected.php
-
-		-
 			message: '#^Cannot access offset ''marker'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -6586,12 +6286,6 @@ parameters:
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
 			count: 5
-			path: ../../Classes/Tca/ShowFormNoteIfNoEmailOrNameSelected.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Tca\\ShowFormNoteIfNoEmailOrNameSelected\:\:getHtml\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
 			path: ../../Classes/Tca/ShowFormNoteIfNoEmailOrNameSelected.php
 
 		-
@@ -6956,18 +6650,6 @@ parameters:
 
 		-
 			message: '#^Method In2code\\Powermail\\Utility\\ArrayUtility\:\:getValueByPath\(\) has parameter \$array with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/ArrayUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\ArrayUtility\:\:htmlspecialcharsOnArray\(\) has parameter \$array with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/ArrayUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\ArrayUtility\:\:htmlspecialcharsOnArray\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../../Classes/Utility/ArrayUtility.php
@@ -7713,7 +7395,7 @@ parameters:
 		-
 			message: '#^Cannot access offset ''_method'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 3
+			count: 2
 			path: ../../Classes/Utility/SessionUtility.php
 
 		-
@@ -7729,15 +7411,9 @@ parameters:
 			path: ../../Classes/Utility/SessionUtility.php
 
 		-
-			message: '#^Cannot access offset \(int\|string\) on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Utility/SessionUtility.php
-
-		-
 			message: '#^Cannot access offset non\-falsy\-string on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
+			count: 1
 			path: ../../Classes/Utility/SessionUtility.php
 
 		-
@@ -7851,12 +7527,6 @@ parameters:
 		-
 			message: '#^Parameter \#1 \$key of function array_key_exists expects int\|string, mixed given\.$#'
 			identifier: argument.type
-			count: 2
-			path: ../../Classes/Utility/SessionUtility.php
-
-		-
-			message: '#^Parameter \#1 \$name of method TYPO3\\CMS\\Frontend\\ContentObject\\ContentObjectRenderer\:\:cObjGetSingle\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../../Classes/Utility/SessionUtility.php
 
@@ -7915,80 +7585,8 @@ parameters:
 			path: ../../Classes/Utility/TemplateUtility.php
 
 		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method setFormat\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method setLayoutRootPaths\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method setPartialRootPaths\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method setRequest\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method setTemplatePathAndFilename\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Call to method setTemplateSource\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
 			message: '#^Cannot access offset non\-falsy\-string on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Class TYPO3\\CMS\\Fluid\\View\\StandaloneView not found\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:fluidParseString\(\) has parameter \$variables with no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:fluidParseString\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:getDefaultStandAloneView\(\) has invalid return type TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Utility/TemplateUtility.php
 
@@ -8013,18 +7611,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:powermailAll\(\) has parameter \$settings with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:powermailAll\(\) should return string\|null but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^PHPDoc tag @var for variable \$standaloneView contains unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
 			count: 1
 			path: ../../Classes/Utility/TemplateUtility.php
 
@@ -8437,18 +8023,6 @@ parameters:
 			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
 
 		-
-			message: '#^Call to an undefined method In2code\\Powermail\\ViewHelpers\\Form\\AdvancedSelectViewHelper\:\:registerTagAttribute\(\)\.$#'
-			identifier: method.notFound
-			count: 2
-			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
-
-		-
-			message: '#^Call to an undefined method In2code\\Powermail\\ViewHelpers\\Form\\AdvancedSelectViewHelper\:\:registerUniversalTagAttributes\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
-
-		-
 			message: '#^Cannot call method getViewHelperVariableContainer\(\) on TYPO3Fluid\\Fluid\\Core\\Rendering\\RenderingContextInterface\|null\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -8485,12 +8059,6 @@ parameters:
 			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
 
 		-
-			message: '#^Parameter \#1 \$array of function asort expects an array of values castable to string, array given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
-
-		-
 			message: '#^Parameter \#1 \$object of method TYPO3\\CMS\\Extbase\\Persistence\\PersistenceManagerInterface\:\:getIdentifierByObject\(\) expects object, array\<mixed, mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 2
@@ -8506,12 +8074,6 @@ parameters:
 			message: '#^Parameter \#2 \$propertyPath of static method TYPO3\\CMS\\Extbase\\Reflection\\ObjectAccess\:\:getPropertyPath\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 3
-			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
-
-		-
-			message: '#^Possibly invalid array key type mixed\.$#'
-			identifier: offsetAccess.invalidOffset
-			count: 1
 			path: ../../Classes/ViewHelpers/Form/AdvancedSelectViewHelper.php
 
 		-
@@ -8569,18 +8131,6 @@ parameters:
 			path: ../../Classes/ViewHelpers/Form/CountriesViewHelper.php
 
 		-
-			message: '#^Call to an undefined method In2code\\Powermail\\ViewHelpers\\Form\\MultiUploadViewHelper\:\:registerTagAttribute\(\)\.$#'
-			identifier: method.notFound
-			count: 3
-			path: ../../Classes/ViewHelpers/Form/MultiUploadViewHelper.php
-
-		-
-			message: '#^Call to an undefined method In2code\\Powermail\\ViewHelpers\\Form\\MultiUploadViewHelper\:\:registerUniversalTagAttributes\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Form/MultiUploadViewHelper.php
-
-		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
 			identifier: foreach.nonIterable
 			count: 2
@@ -8595,18 +8145,6 @@ parameters:
 		-
 			message: '#^Binary operation "\.\=" between string and mixed results in an error\.$#'
 			identifier: assignOp.invalid
-			count: 1
-			path: ../../Classes/ViewHelpers/Form/SelectFieldViewHelper.php
-
-		-
-			message: '#^Call to an undefined method In2code\\Powermail\\ViewHelpers\\Form\\SelectFieldViewHelper\:\:registerTagAttribute\(\)\.$#'
-			identifier: method.notFound
-			count: 2
-			path: ../../Classes/ViewHelpers/Form/SelectFieldViewHelper.php
-
-		-
-			message: '#^Call to an undefined method In2code\\Powermail\\ViewHelpers\\Form\\SelectFieldViewHelper\:\:registerUniversalTagAttributes\(\)\.$#'
-			identifier: method.notFound
 			count: 1
 			path: ../../Classes/ViewHelpers/Form/SelectFieldViewHelper.php
 
@@ -8689,12 +8227,6 @@ parameters:
 			path: ../../Classes/ViewHelpers/Form/SelectFieldViewHelper.php
 
 		-
-			message: '#^Parameter \#1 \$array of function asort expects an array of values castable to string, array given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/ViewHelpers/Form/SelectFieldViewHelper.php
-
-		-
 			message: '#^Parameter \#1 \$object of method TYPO3\\CMS\\Extbase\\Persistence\\PersistenceManagerInterface\:\:getIdentifierByObject\(\) expects object, array\<mixed, mixed\>\|object given\.$#'
 			identifier: argument.type
 			count: 2
@@ -8715,7 +8247,7 @@ parameters:
 		-
 			message: '#^Possibly invalid array key type mixed\.$#'
 			identifier: offsetAccess.invalidOffset
-			count: 2
+			count: 1
 			path: ../../Classes/ViewHelpers/Form/SelectFieldViewHelper.php
 
 		-
@@ -9577,48 +9109,6 @@ parameters:
 			path: ../../Classes/ViewHelpers/Misc/VariableInVariableViewHelper.php
 
 		-
-			message: '#^Call to method assign\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Call to method assignMultiple\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 2
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Call to method render\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Call to method setRequest\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Call to method setTemplateSource\(\) on an unknown class TYPO3\\CMS\\Fluid\\View\\StandaloneView\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Cannot call method getRequest\(\) on TYPO3Fluid\\Fluid\\Core\\Rendering\\RenderingContextInterface\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Class TYPO3\\CMS\\Fluid\\View\\StandaloneView not found\.$#'
-			identifier: class.notFound
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
 			message: '#^Method In2code\\Powermail\\ViewHelpers\\Misc\\VariablesViewHelper\:\:removePowermailAllParagraphTagWrap\(\) should return string but returns string\|null\.$#'
 			identifier: return.type
 			count: 1
@@ -9644,12 +9134,6 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$mail of static method In2code\\Powermail\\Utility\\TemplateUtility\:\:powermailAll\(\) expects In2code\\Powermail\\Domain\\Model\\Mail, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
-
-		-
-			message: '#^Parameter \#1 \$string of function html_entity_decode expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/ViewHelpers/Misc/VariablesViewHelper.php
@@ -10193,24 +9677,6 @@ parameters:
 			identifier: return.type
 			count: 1
 			path: ../../Classes/ViewHelpers/Validation/EnableJavascriptValidationAndAjaxViewHelper.php
-
-		-
-			message: '#^Cannot call method getOriginalRequestMappingResults\(\) on TYPO3\\CMS\\Extbase\\Mvc\\ExtbaseRequestParameters\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/ViewHelpers/Validation/ErrorClassViewHelper.php
-
-		-
-			message: '#^Cannot call method getRequest\(\) on TYPO3Fluid\\Fluid\\Core\\Rendering\\RenderingContextInterface\|null\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/ViewHelpers/Validation/ErrorClassViewHelper.php
-
-		-
-			message: '#^Method In2code\\Powermail\\ViewHelpers\\Validation\\ErrorClassViewHelper\:\:getRequest\(\) should return TYPO3\\CMS\\Extbase\\Mvc\\Request but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/ViewHelpers/Validation/ErrorClassViewHelper.php
 
 		-
 			message: '#^Method In2code\\Powermail\\ViewHelpers\\Validation\\ErrorClassViewHelper\:\:render\(\) should return string but returns mixed\.$#'

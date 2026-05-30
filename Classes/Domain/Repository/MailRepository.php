@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace In2code\Powermail\Domain\Repository;
 
 use In2code\Powermail\Domain\Model\Answer;
+use In2code\Powermail\Domain\Model\Field;
 use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Model\Mail;
 use In2code\Powermail\Events\MailRepositoryGetVariablesWithMarkersFromMailEvent;
@@ -315,14 +316,22 @@ class MailRepository extends AbstractRepository
     /**
      * Generate a new array with labels
      *        label_firstname => Firstname
+     *
+     * @return array<string, mixed>
      */
     public function getLabelsWithMarkersFromMail(Mail $mail): array
     {
+        /** @var array<string, mixed> $variables */
         $variables = [];
         foreach ($mail->getAnswers() as $answer) {
-            if (method_exists($answer, 'getField') && method_exists($answer->getField(), 'getMarker')) {
-                $variables['label_' . $answer->getField()->getMarker()] = $answer->getField()->getTitle();
+            if (!$answer instanceof Answer) {
+                continue;
             }
+            $field = $answer->getField();
+            if (!$field instanceof Field) {
+                continue;
+            }
+            $variables['label_' . $field->getMarker()] = $field->getTitle();
         }
 
         return $variables;
@@ -331,29 +340,31 @@ class MailRepository extends AbstractRepository
     /**
      * Generate a new array with markers and their values
      *        firstname => value
+     *
+     * @return array<string, mixed>
      */
     public function getVariablesWithMarkersFromMail(Mail $mail, bool $htmlSpecialChars = false): array
     {
+        /** @var array<string, mixed> $variables */
         $variables = [];
         foreach ($mail->getAnswers() as $answer) {
-            /**
-             * @var $answer Answer
-             */
-            if (!method_exists($answer, 'getField')) {
+            if (!$answer instanceof Answer) {
                 continue;
             }
-            if (!method_exists($answer->getField(), 'getMarker')) {
+            $field = $answer->getField();
+            if (!$field instanceof Field) {
                 continue;
             }
 
+            $marker = $field->getMarker();
             $value = $answer->getValue();
             if (is_array($value)) {
                 $value = implode(', ', $value);
             }
 
-            $variables[$answer->getField()->getMarker()] = $value;
+            $variables[$marker] = $value;
             if ($answer->getOriginalValue() !== $answer->getStringValue()) {
-                $variables[$answer->getField()->getMarker() . '_originalValue'] = $answer->getOriginalValue();
+                $variables[$marker . '_originalValue'] = $answer->getOriginalValue();
             }
         }
 
@@ -524,27 +535,28 @@ class MailRepository extends AbstractRepository
         ];
         if (isset($piVars['filter'])) {
             foreach ((array)$piVars['filter'] as $field => $value) {
-                if (!is_array($value)) {
-                    if ($field === 'all' && !empty($value)) {
+                if (!is_array($value) && !empty($value)) {
+                    $valueAsString = is_scalar($value) || $value instanceof \Stringable ? (string)$value : '';
+                    if ($field === 'all' && $valueAsString !== '') {
                         $or = [
-                            $query->like('sender_name', '%' . $value . '%'),
-                            $query->like('sender_mail', '%' . $value . '%'),
-                            $query->like('subject', '%' . $value . '%'),
-                            $query->like('receiver_mail', '%' . $value . '%'),
-                            $query->like('sender_ip', '%' . $value . '%'),
-                            $query->like('answers.value', '%' . $value . '%'),
+                            $query->like('sender_name', '%' . $valueAsString . '%'),
+                            $query->like('sender_mail', '%' . $valueAsString . '%'),
+                            $query->like('subject', '%' . $valueAsString . '%'),
+                            $query->like('receiver_mail', '%' . $valueAsString . '%'),
+                            $query->like('sender_ip', '%' . $valueAsString . '%'),
+                            $query->like('answers.value', '%' . $valueAsString . '%'),
                         ];
                         $and[] = $query->logicalOr(...$or);
-                    } elseif ($field === 'form' && !empty($value)) {
+                    } elseif ($field === 'form' && $valueAsString !== '') {
                         $and[] = $query->equals('form', $value);
-                    } elseif ($field === 'start' && !empty($value)) {
-                        $and[] = $query->greaterThan('crdate', strtotime((string)$value));
-                    } elseif ($field === 'stop' && !empty($value)) {
-                        $and[] = $query->lessThan('crdate', strtotime((string)$value));
-                    } elseif ($field === 'hidden' && !empty($value)) {
-                        $and[] = $query->equals($field, ($value - 1));
-                    } elseif (!empty($value)) {
-                        $and[] = $query->like($field, '%' . $value . '%');
+                    } elseif ($field === 'start' && $valueAsString !== '') {
+                        $and[] = $query->greaterThan('crdate', strtotime($valueAsString));
+                    } elseif ($field === 'stop' && $valueAsString !== '') {
+                        $and[] = $query->lessThan('crdate', strtotime($valueAsString));
+                    } elseif ($field === 'hidden' && is_numeric($value)) {
+                        $and[] = $query->equals($field, ((int)$value - 1));
+                    } elseif ($valueAsString !== '') {
+                        $and[] = $query->like($field, '%' . $valueAsString . '%');
                     }
                 }
 

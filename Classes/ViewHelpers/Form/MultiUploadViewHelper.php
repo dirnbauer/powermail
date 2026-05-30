@@ -43,12 +43,15 @@ class MultiUploadViewHelper extends AbstractFormFieldViewHelper
         return $this->tag->render();
     }
 
+    /**
+     * @param array<int, string> $attributeNames
+     */
     protected function addConfiguredTagAttributes(array $attributeNames): void
     {
         foreach ($attributeNames as $attributeName) {
             $value = $this->arguments[$attributeName] ?? null;
             if ($value !== null && $value !== false && $value !== '') {
-                $this->tag->addAttribute($attributeName, (string)$value);
+                $this->tag->addAttribute($attributeName, $value instanceof \Stringable || is_scalar($value) ? (string)$value : '');
             }
         }
     }

@@ -8,6 +8,7 @@ use Doctrine\DBAL\DBALException;
 use In2code\Powermail\Domain\Model\Field;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Extbase\Error\Error;
+use TYPO3\CMS\Extbase\Mvc\ExtbaseRequestParameters;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -30,11 +31,12 @@ class ErrorClassViewHelper extends AbstractViewHelper
         /** @var Field $field */
         $field = $this->arguments['field'];
         $request = $this->getRequest();
-        if (!$request instanceof ServerRequestInterface || $request->getAttribute('extbase') === null) {
+        $extbaseRequestParameters = $request?->getAttribute('extbase');
+        if (!$extbaseRequestParameters instanceof ExtbaseRequestParameters) {
             return '';
         }
 
-        $validationResults = $request->getAttribute('extbase')->getOriginalRequestMappingResults();
+        $validationResults = $extbaseRequestParameters->getOriginalRequestMappingResults();
         $errors = $validationResults->getFlattenedErrors();
         foreach ($errors as $error) {
             /** @var Error $singleError */
@@ -56,8 +58,9 @@ class ErrorClassViewHelper extends AbstractViewHelper
      */
     protected function getRequest(): ?ServerRequestInterface
     {
-        if ($this->renderingContext->hasAttribute(ServerRequestInterface::class)) {
-            return $this->renderingContext->getAttribute(ServerRequestInterface::class);
+        $renderingContext = $this->renderingContext;
+        if ($renderingContext !== null && $renderingContext->hasAttribute(ServerRequestInterface::class)) {
+            return $renderingContext->getAttribute(ServerRequestInterface::class);
         }
         return null;
     }

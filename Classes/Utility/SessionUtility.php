@@ -124,17 +124,21 @@ class SessionUtility
         $typoScriptService = GeneralUtility::makeInstance(TypoScriptService::class);
         $contentObject = ObjectUtility::getContentObject();
         $configuration = $typoScriptService->convertPlainArrayToTypoScriptArray($settings);
-        if (!empty($configuration['saveSession.']) &&
-            array_key_exists($configuration['saveSession.']['_method'], self::$methods)
+        $saveSessionConfiguration = $configuration['saveSession.'] ?? [];
+        if (is_array($saveSessionConfiguration)
+            && is_string($saveSessionConfiguration['_method'] ?? null)
+            && array_key_exists($saveSessionConfiguration['_method'], self::$methods)
         ) {
             $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
             $variablesWithMarkers = $mailRepository->getVariablesWithMarkersFromMail($mail);
             $contentObject->start($variablesWithMarkers);
             foreach (array_keys($variablesWithMarkers) as $marker) {
-                if (!empty($configuration['saveSession.'][$marker])) {
+                $saveSessionValue = $saveSessionConfiguration[$marker] ?? null;
+                if (!empty($saveSessionValue) && (is_scalar($saveSessionValue) || $saveSessionValue instanceof \Stringable)) {
+                    $markerConfiguration = $saveSessionConfiguration[$marker . '.'] ?? [];
                     $value = $contentObject->cObjGetSingle(
-                        $configuration['saveSession.'][$marker],
-                        $configuration['saveSession.'][$marker . '.']
+                        (string)$saveSessionValue,
+                        is_array($markerConfiguration) ? $markerConfiguration : []
                     );
                     $valuesToSave[$marker] = $value;
                 }

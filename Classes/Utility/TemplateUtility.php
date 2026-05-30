@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace In2code\Powermail\Utility;
 
 use In2code\Powermail\Domain\Model\Mail;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\View\ViewFactoryData;
@@ -82,16 +83,23 @@ class TemplateUtility
      * Get a default Standalone view
      */
     public static function getDefaultView(
-        string $format = 'html'
+        string $format = 'html',
+        ?ServerRequestInterface $request = null
     ): ViewInterface {
         /** @var ViewFactoryInterface $viewFactory */
         $viewFactory = GeneralUtility::makeInstance(ViewFactoryInterface::class);
         return $viewFactory->create(new ViewFactoryData(
             partialRootPaths: self::getTemplateFolders('partial'),
             layoutRootPaths: self::getTemplateFolders('layout'),
-            request: $GLOBALS['TYPO3_REQUEST'] ?? null,
+            request: $request ?? self::getCurrentRequest(),
             format: $format,
         ));
+    }
+
+    protected static function getCurrentRequest(): ?ServerRequestInterface
+    {
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        return $request instanceof ServerRequestInterface ? $request : null;
     }
 
     /**
@@ -120,6 +128,8 @@ class TemplateUtility
 
     /**
      * Parse String with Fluid View
+     *
+     * @param array<string, mixed> $variables
      */
     public static function fluidParseString(string $string, array $variables = []): string
     {

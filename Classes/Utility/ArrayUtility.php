@@ -34,8 +34,8 @@ class ArrayUtility
     /**
      * Use htmlspecialchars on array (key and value) (any depth - recursive call)
      *
-     * @param array $array Any array
-     * @return array Cleaned array
+     * @param array<array-key, mixed> $array Any array
+     * @return array<string, mixed> Cleaned array
      */
     public static function htmlspecialcharsOnArray(array $array): array
     {

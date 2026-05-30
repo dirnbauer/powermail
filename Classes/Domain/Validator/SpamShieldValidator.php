@@ -189,7 +189,7 @@ class SpamShieldValidator extends AbstractValidator
      *     - bodytext for spamnotification mail OR
      *     - log entry
      * @param string $path
-     * @param array $multipleAssign
+     * @param array<string, mixed> $multipleAssign
      * @return string
      */
     protected function createSpamNotificationMessage(string $path, array $multipleAssign = []): string
@@ -206,6 +206,7 @@ class SpamShieldValidator extends AbstractValidator
      * Prepare variables for assignment in spam notifications
      *
      * @SuppressWarnings(PHPMD.Superglobals)
+     * @return array<string, mixed>
      * @throws Exception
      */
     protected function getVariablesForSpamNotification(Mail $mail): array

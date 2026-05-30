@@ -9,16 +9,24 @@ final class MailRepositoryGetVariablesWithMarkersFromMailEvent
 {
     /**
      * Constructor
+     *
+     * @param array<string, mixed> $variables
      */
     public function __construct(protected array $variables, protected Mail $mail)
     {
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getVariables(): array
     {
         return $this->variables;
     }
 
+    /**
+     * @param array<string, mixed> $variables
+     */
     public function setVariables(array $variables): MailRepositoryGetVariablesWithMarkersFromMailEvent
     {
         $this->variables = $variables;

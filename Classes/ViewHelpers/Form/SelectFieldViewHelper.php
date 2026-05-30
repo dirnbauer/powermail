@@ -120,6 +120,9 @@ class SelectFieldViewHelper extends AbstractFormFieldViewHelper
         return $content . $this->tag->render();
     }
 
+    /**
+     * @param array<int, string> $attributeNames
+     */
     protected function addConfiguredTagAttributes(array $attributeNames): void
     {
         foreach ($attributeNames as $attributeName) {
@@ -302,11 +305,14 @@ class SelectFieldViewHelper extends AbstractFormFieldViewHelper
                 }
             }
 
-            $options[$key] = $value;
+            $options[$this->normalizeOptionKey($key)] = $value;
         }
 
         if ($this->arguments['sortByOptionLabel']) {
-            asort($options, SORT_LOCALE_STRING);
+            uasort($options, fn (mixed $left, mixed $right): int => strcoll(
+                $this->getOptionValueAsString($left),
+                $this->getOptionValueAsString($right)
+            ));
         }
 
         return $options;
@@ -321,7 +327,7 @@ class SelectFieldViewHelper extends AbstractFormFieldViewHelper
     protected function isSelected(mixed $value): bool
     {
         $selectedValue = $this->getSelectedValue();
-        if ($value === $selectedValue || (string)$value === $selectedValue) {
+        if ($value === $selectedValue || $this->getOptionValueAsString($value) === $selectedValue) {
             return true;
         }
 
@@ -336,6 +342,28 @@ class SelectFieldViewHelper extends AbstractFormFieldViewHelper
         }
 
         return false;
+    }
+
+    protected function normalizeOptionKey(mixed $key): int|string
+    {
+        if (is_int($key) || is_string($key)) {
+            return $key;
+        }
+        if (is_bool($key) || is_float($key)) {
+            return (int)$key;
+        }
+        if ($key instanceof \Stringable) {
+            return (string)$key;
+        }
+        return '';
+    }
+
+    protected function getOptionValueAsString(mixed $value): string
+    {
+        if ($value instanceof \Stringable || is_scalar($value)) {
+            return (string)$value;
+        }
+        return '';
     }
 
     /**
