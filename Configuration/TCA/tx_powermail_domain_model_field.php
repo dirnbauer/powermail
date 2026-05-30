@@ -2,7 +2,6 @@
 
 use In2code\Powermail\Domain\Model\Field;
 use In2code\Powermail\Domain\Model\Page;
-use In2code\Powermail\Utility\ConfigurationUtility;
 
 /**
  * Fieldtypes
@@ -254,7 +253,9 @@ $fieldsTca = [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => ConfigurationUtility::getIconPath(Field::TABLE_NAME . '.gif'),
+        'typeicon_classes' => [
+            'default' => 'record-powermail-field',
+        ],
         'searchFields' => 'title',
     ],
     'interface' => [

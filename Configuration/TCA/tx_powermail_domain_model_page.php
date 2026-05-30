@@ -3,7 +3,6 @@
 use In2code\Powermail\Domain\Model\Field;
 use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Model\Page;
-use In2code\Powermail\Utility\ConfigurationUtility;
 
 $pagesTca = [
     'ctrl' => [
@@ -27,7 +26,9 @@ $pagesTca = [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => ConfigurationUtility::getIconPath(Page::TABLE_NAME . '.gif'),
+        'typeicon_classes' => [
+            'default' => 'record-powermail-page',
+        ],
         'searchFields' => 'title',
     ],
     'interface' => [

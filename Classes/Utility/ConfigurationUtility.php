@@ -142,14 +142,6 @@ class ConfigurationUtility
     }
 
     /**
-     * Get path to an icon for TCA configuration
-     */
-    public static function getIconPath(string $fileName): string
-    {
-        return 'EXT:powermail/Resources/Public/Icons/' . $fileName;
-    }
-
-    /**
      * Check if a given validation is turned on generally
      * and if there is a given spamshield method enabled
      */
