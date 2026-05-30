@@ -49,7 +49,7 @@ use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\View\ViewInterface;
-use TYPO3\CMS\Extbase\Annotation as ExtbaseAnnotation;
+use TYPO3\CMS\Extbase\Attribute as ExtbaseAttribute;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
@@ -85,6 +85,7 @@ class FormController extends AbstractController
     /**
      * @noinspection PhpUnused
      */
+    #[ExtbaseAttribute\IgnoreValidation]
     public function formAction(): ResponseInterface
     {
         if (!ArrayUtility::isValidPath($this->settings, 'main/form')) {
@@ -137,14 +138,14 @@ class FormController extends AbstractController
      * @return ResponseInterface
      * @throws Exception
      */
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\UploadValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\InputValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\PasswordValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\CaptchaValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\SpamShieldValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\UniqueValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\ForeignValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\CustomValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\UploadValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\InputValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\PasswordValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\CaptchaValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\SpamShieldValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\UniqueValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\ForeignValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\CustomValidator::class, 'param' => 'mail'])]
     public function confirmationAction(Mail $mail): ResponseInterface
     {
         if ($mail->getUid() !== null) {
@@ -188,14 +189,14 @@ class FormController extends AbstractController
      * @return ResponseInterface
      * @throws Exception
      */
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\UploadValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\InputValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\PasswordValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\CaptchaValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\SpamShieldValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\UniqueValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\ForeignValidator::class, 'param' => 'mail'])]
-    #[ExtbaseAnnotation\Validate(['validator' => \In2code\Powermail\Domain\Validator\CustomValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\UploadValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\InputValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\PasswordValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\CaptchaValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\SpamShieldValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\UniqueValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\ForeignValidator::class, 'param' => 'mail'])]
+    #[ExtbaseAttribute\Validate(['validator' => \In2code\Powermail\Domain\Validator\CustomValidator::class, 'param' => 'mail'])]
     public function createAction(Mail $mail, string $hash = ''): ResponseInterface
     {
         if ($mail->getUid() !== null && !HashUtility::isHashValid($hash, $mail)) {

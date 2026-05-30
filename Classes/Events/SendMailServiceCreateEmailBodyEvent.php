@@ -4,20 +4,20 @@ declare(strict_types=1);
 namespace In2code\Powermail\Events;
 
 use In2code\Powermail\Domain\Service\Mail\SendMailService;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Core\View\ViewInterface;
 
 final class SendMailServiceCreateEmailBodyEvent
 {
-    public function __construct(protected StandaloneView $standaloneView, protected array $email, protected SendMailService $sendMailService)
+    public function __construct(protected ViewInterface $standaloneView, protected array $email, protected SendMailService $sendMailService)
     {
     }
 
-    public function getStandaloneView(): StandaloneView
+    public function getStandaloneView(): ViewInterface
     {
         return $this->standaloneView;
     }
 
-    public function setStandaloneView(StandaloneView $standaloneView): SendMailServiceCreateEmailBodyEvent
+    public function setStandaloneView(ViewInterface $standaloneView): SendMailServiceCreateEmailBodyEvent
     {
         $this->standaloneView = $standaloneView;
         return $this;

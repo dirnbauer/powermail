@@ -19,6 +19,7 @@ use TYPO3\CMS\Core\Service\FlexFormService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Contains a preview rendering for the powermail page module
@@ -77,8 +78,10 @@ class PluginPreviewRenderer extends StandardContentPreviewRenderer
      */
     protected function getPluginInformation(string $pluginName, array $row): string
     {
-        $standaloneView = TemplateUtility::getDefaultStandAloneView();
-        $standaloneView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->templatePathAndFile));
+        $standaloneView = TemplateUtility::getDefaultView();
+        if ($standaloneView instanceof FluidViewAdapter) {
+            $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->templatePathAndFile));
+        }
         $standaloneView->assignMultiple(
             [
                 'row' => $row,

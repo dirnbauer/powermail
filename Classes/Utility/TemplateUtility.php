@@ -6,8 +6,11 @@ namespace In2code\Powermail\Utility;
 use In2code\Powermail\Domain\Model\Mail;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
+use TYPO3\CMS\Core\View\ViewInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class TemplateUtility
@@ -78,16 +81,17 @@ class TemplateUtility
     /**
      * Get a default Standalone view
      */
-    public static function getDefaultStandAloneView(
+    public static function getDefaultView(
         string $format = 'html'
-    ): StandaloneView {
-        /** @var StandaloneView $standaloneView */
-        $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
-        $standaloneView->setFormat($format);
-        $standaloneView->setRequest($GLOBALS['TYPO3_REQUEST']);
-        $standaloneView->setLayoutRootPaths(self::getTemplateFolders('layout'));
-        $standaloneView->setPartialRootPaths(self::getTemplateFolders('partial'));
-        return $standaloneView;
+    ): ViewInterface {
+        /** @var ViewFactoryInterface $viewFactory */
+        $viewFactory = GeneralUtility::makeInstance(ViewFactoryInterface::class);
+        return $viewFactory->create(new ViewFactoryData(
+            partialRootPaths: self::getTemplateFolders('partial'),
+            layoutRootPaths: self::getTemplateFolders('layout'),
+            request: $GLOBALS['TYPO3_REQUEST'] ?? null,
+            format: $format,
+        ));
     }
 
     /**
@@ -99,9 +103,11 @@ class TemplateUtility
         array $settings = [],
         ?string $type = null
     ): ?string {
-        $standaloneView = self::getDefaultStandAloneView();
-        $standaloneView->setTemplatePathAndFilename(self::getTemplatePath('Form/PowermailAll.html'));
-        $standaloneView->assignMultiple(
+        $view = self::getDefaultView();
+        if ($view instanceof FluidViewAdapter) {
+            $view->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(self::getTemplatePath('Form/PowermailAll.html'));
+        }
+        $view->assignMultiple(
             [
                 'mail' => $mail,
                 'section' => $section,
@@ -109,7 +115,7 @@ class TemplateUtility
                 'type' => $type,
             ]
         );
-        return $standaloneView->render();
+        return $view->render();
     }
 
     /**
@@ -125,10 +131,12 @@ class TemplateUtility
             return $string;
         }
 
-        $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
-        $standaloneView->setRequest($GLOBALS['TYPO3_REQUEST']);
-        $standaloneView->setTemplateSource($string);
-        $standaloneView->assignMultiple($variables);
-        return $standaloneView->render() ?? '';
+        $view = self::getDefaultView();
+        if (!$view instanceof FluidViewAdapter) {
+            return $string;
+        }
+        $view->getRenderingContext()->getTemplatePaths()->setTemplateSource($string);
+        $view->assignMultiple($variables);
+        return $view->render();
     }
 }

@@ -25,9 +25,8 @@ class AdvancedSelectViewHelper extends AbstractFormFieldViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerUniversalTagAttributes();
-        $this->registerTagAttribute('size', 'string', 'Size of input field');
-        $this->registerTagAttribute('disabled', 'string', 'Specifies that the input element should be disabled when the page loads');
+        $this->registerArgument('size', 'string', 'Size of input field');
+        $this->registerArgument('disabled', 'string', 'Specifies that the input element should be disabled when the page loads');
         $this->registerArgument('options', 'array', 'Associative array with internal IDs as key, and the values are displayed in the select box. Can be combined with or replaced by child f:form.select.* nodes.');
         $this->registerArgument('optionsAfterContent', 'boolean', 'If true, places auto-generated option tags after those rendered in the tag content. If false, automatic options come first.', false, false);
         $this->registerArgument('optionValueField', 'string', 'If specified, will call the appropriate getter on each object to determine the value.');
@@ -47,6 +46,8 @@ class AdvancedSelectViewHelper extends AbstractFormFieldViewHelper
         if ($this->arguments['required']) {
             $this->tag->addAttribute('required', 'required');
         }
+
+        $this->addConfiguredTagAttributes(['size', 'disabled']);
 
         $name = $this->getName();
         if ($this->arguments['multiple']) {
@@ -104,6 +105,16 @@ class AdvancedSelectViewHelper extends AbstractFormFieldViewHelper
         $this->tag->forceClosingTag(true);
         $this->tag->setContent($tagContent);
         return $content . $this->tag->render();
+    }
+
+    protected function addConfiguredTagAttributes(array $attributeNames): void
+    {
+        foreach ($attributeNames as $attributeName) {
+            $value = $this->arguments[$attributeName] ?? null;
+            if ($value !== null && $value !== false && $value !== '') {
+                $this->tag->addAttribute($attributeName, (string)$value);
+            }
+        }
     }
 
     /**

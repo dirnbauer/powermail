@@ -18,6 +18,7 @@ use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidExtensionNameException;
 use TYPO3\CMS\Extbase\Persistence\Generic\QueryResult;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class ExportService
@@ -146,8 +147,10 @@ class ExportService
      */
     protected function createMailBody(): string
     {
-        $standaloneView = TemplateUtility::getDefaultStandAloneView();
-        $standaloneView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->getEmailTemplate()));
+        $standaloneView = TemplateUtility::getDefaultView();
+        if ($standaloneView instanceof FluidViewAdapter) {
+            $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->getEmailTemplate()));
+        }
         $standaloneView->assign('export', $this);
         return $standaloneView->render();
     }
@@ -175,10 +178,12 @@ class ExportService
      */
     protected function getFileContent(): string
     {
-        $standaloneView = TemplateUtility::getDefaultStandAloneView();
-        $standaloneView->setTemplatePathAndFilename(
-            TemplateUtility::getTemplatePath($this->getRelativeTemplatePathAndFileName())
-        );
+        $standaloneView = TemplateUtility::getDefaultView();
+        if ($standaloneView instanceof FluidViewAdapter) {
+            $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(
+                TemplateUtility::getTemplatePath($this->getRelativeTemplatePathAndFileName())
+            );
+        }
         $standaloneView->assignMultiple(
             [
                 'mails' => $this->getMails(),

@@ -9,7 +9,7 @@ use In2code\Powermail\Domain\Service\ConfigurationService;
 use In2code\Powermail\Utility\ArrayUtility;
 use In2code\Powermail\Utility\TemplateUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -49,9 +49,11 @@ class VariablesViewHelper extends AbstractViewHelper
         $type = $this->arguments['type'];
         $function = $this->arguments['function'];
         $mailRepository = GeneralUtility::makeInstance(MailRepository::class);
-        $parseObject = GeneralUtility::makeInstance(StandaloneView::class);
-        $parseObject->setRequest($this->renderingContext->getRequest());
-        $parseObject->setTemplateSource($this->removePowermailAllParagraphTagWrap($this->renderChildren()));
+        $parseObject = TemplateUtility::getDefaultView();
+        if (!$parseObject instanceof FluidViewAdapter) {
+            return '';
+        }
+        $parseObject->getRenderingContext()->getTemplatePaths()->setTemplateSource($this->removePowermailAllParagraphTagWrap($this->renderChildren()));
         $parseObject->assignMultiple(
             ArrayUtility::htmlspecialcharsOnArray($mailRepository->getVariablesWithMarkersFromMail($mail))
         );
