@@ -4,7 +4,6 @@ use In2code\Powermail\Domain\Model\Answer;
 use In2code\Powermail\Domain\Model\Field;
 use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Model\Mail;
-use In2code\Powermail\Utility\ConfigurationUtility;
 
 $typeDefault = 'crdate, receiver_mail, ' .
     '--palette--;LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:' . Mail::TABLE_NAME . '.palette1;1, ' .
@@ -37,7 +36,9 @@ $mailsTca = [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => ConfigurationUtility::getIconPath(Mail::TABLE_NAME . '.gif'),
+        'typeicon_classes' => [
+            'default' => 'record-powermail-mail',
+        ],
         'searchFields' => 'sender_mail, sender_name, subject, body',
     ],
     'interface' => [

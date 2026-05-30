@@ -3,7 +3,6 @@
 use In2code\Powermail\Domain\Model\Answer;
 use In2code\Powermail\Domain\Model\Field;
 use In2code\Powermail\Domain\Model\Mail;
-use In2code\Powermail\Utility\ConfigurationUtility;
 
 $answersTca = [
     'ctrl' => [
@@ -26,7 +25,9 @@ $answersTca = [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => ConfigurationUtility::getIconPath(Answer::TABLE_NAME . '.gif'),
+        'typeicon_classes' => [
+            'default' => 'record-powermail-answer',
+        ],
     ],
     'interface' => [
     ],

@@ -4,7 +4,7 @@ mod.wizards.newContentElement.wizardItems.ext-powermail {
   before = special
   elements {
     powermail-form {
-      iconIdentifier = extension-powermail-main
+      iconIdentifier = plugin-powermail-form
       title = LLL:EXT:powermail/Resources/Private/Language/locallang_mod.xlf:powermail_pi1.title
       description = LLL:EXT:powermail/Resources/Private/Language/locallang_mod.xlf:powermail_pi1.description
       tt_content_defValues {

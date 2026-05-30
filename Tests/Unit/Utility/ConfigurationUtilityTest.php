@@ -49,17 +49,6 @@ class ConfigurationUtilityTest extends UnitTestCase
 
     /**
      * @test
-     * @covers ::getIconPath
-     * @covers \In2code\Powermail\Utility\AbstractUtility::getTypo3ConfigurationVariables
-     */
-    public function getIconPathReturnsString(): void
-    {
-        $icon = 'random';
-        self::assertSame('EXT:powermail/Resources/Public/Icons/' . $icon, ConfigurationUtility::getIconPath($icon));
-    }
-
-    /**
-     * @test
      * @covers ::isValidationEnabled
      */
     public function isValidationEnabledReturnsBool(): void
