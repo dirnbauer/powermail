@@ -15,6 +15,7 @@ use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExis
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class ShowFormNoteIfNoEmailOrNameSelected shows one or two warnings in backend below a form if
@@ -53,8 +54,10 @@ class ShowFormNoteIfNoEmailOrNameSelected extends AbstractFormElement
     protected function getHtml(): string
     {
         if ($this->shouldNotebeShown()) {
-            $standaloneView = TemplateUtility::getDefaultStandAloneView();
-            $standaloneView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->templatePathAndFile));
+            $standaloneView = TemplateUtility::getDefaultView();
+            if ($standaloneView instanceof FluidViewAdapter) {
+                $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->templatePathAndFile));
+            }
             $standaloneView->assignMultiple(
                 [
                     'mutedNote' => $this->isNoteMuted(),

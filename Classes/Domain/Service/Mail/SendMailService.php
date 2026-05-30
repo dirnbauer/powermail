@@ -21,6 +21,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility as ArrayUtilityCore;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
 use TYPO3\CMS\Extbase\Mvc\Request;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class SendMailService
@@ -324,9 +325,10 @@ class SendMailService
      */
     protected function createEmailBody(array $email): string
     {
-        $standaloneView = TemplateUtility::getDefaultStandAloneView();
-        $standaloneView->setRequest($this->request);
-        $standaloneView->setTemplatePathAndFilename(TemplateUtility::getTemplatePath($email['template'] . '.html'));
+        $standaloneView = TemplateUtility::getDefaultView();
+        if ($standaloneView instanceof FluidViewAdapter) {
+            $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(TemplateUtility::getTemplatePath($email['template'] . '.html'));
+        }
 
         // variables
         $mailRepository = GeneralUtility::makeInstance(MailRepository::class);

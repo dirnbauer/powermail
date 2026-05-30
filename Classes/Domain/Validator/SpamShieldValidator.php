@@ -20,6 +20,7 @@ use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExis
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Error\Result;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidExtensionNameException;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class SpamShieldValidator
@@ -193,8 +194,10 @@ class SpamShieldValidator extends AbstractValidator
      */
     protected function createSpamNotificationMessage(string $path, array $multipleAssign = []): string
     {
-        $standaloneView = TemplateUtility::getDefaultStandAloneView();
-        $standaloneView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($path));
+        $standaloneView = TemplateUtility::getDefaultView();
+        if ($standaloneView instanceof FluidViewAdapter) {
+            $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($path));
+        }
         $standaloneView->assignMultiple($multipleAssign);
         return $standaloneView->render();
     }

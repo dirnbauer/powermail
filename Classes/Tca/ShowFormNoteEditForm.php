@@ -23,6 +23,7 @@ use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExis
 use TYPO3\CMS\Core\Utility\ArrayUtility as CoreArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
+use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class ShowFormNoteEditForm
@@ -72,8 +73,10 @@ class ShowFormNoteEditForm extends AbstractFormElement
      */
     protected function getHtml(): string
     {
-        $standaloneView = TemplateUtility::getDefaultStandAloneView();
-        $standaloneView->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->templatePathAndFile));
+        $standaloneView = TemplateUtility::getDefaultView();
+        if ($standaloneView instanceof FluidViewAdapter) {
+            $standaloneView->getRenderingContext()->getTemplatePaths()->setTemplatePathAndFilename(GeneralUtility::getFileAbsFileName($this->templatePathAndFile));
+        }
         $standaloneView->assignMultiple(
             [
                 'formProperties' => $this->getFormProperties(),
