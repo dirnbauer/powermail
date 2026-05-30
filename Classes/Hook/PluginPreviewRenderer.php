@@ -40,7 +40,8 @@ class PluginPreviewRenderer extends StandardContentPreviewRenderer
      */
     public function renderPageModulePreviewContent(GridColumnItem $item): string
     {
-        $row = $item->getRecord();
+        $row = $item->getRow();
+        $this->row = $row;
 
         $flexFormService = GeneralUtility::makeInstance(FlexFormService::class);
 
