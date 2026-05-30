@@ -18,11 +18,10 @@ class MultiUploadViewHelper extends AbstractFormFieldViewHelper
     public function initializeArguments(): void
     {
         parent::initializeArguments();
-        $this->registerTagAttribute('disabled', 'string', 'Specifies that the input element should be disabled when the page loads');
-        $this->registerTagAttribute('multiple', 'string', 'Specifies that the file input element should allow multiple selection of files');
-        $this->registerTagAttribute('accept', 'string', 'Specifies the allowed file extensions to upload via comma-separated list, example ".png,.gif"');
+        $this->registerArgument('disabled', 'string', 'Specifies that the input element should be disabled when the page loads');
+        $this->registerArgument('multiple', 'string', 'Specifies that the file input element should allow multiple selection of files');
+        $this->registerArgument('accept', 'string', 'Specifies the allowed file extensions to upload via comma-separated list, example ".png,.gif"');
         $this->registerArgument('errorClass', 'string', 'CSS class to set if there are errors for this ViewHelper', false, 'f3-form-error');
-        $this->registerUniversalTagAttributes();
     }
 
     /**
@@ -37,9 +36,20 @@ class MultiUploadViewHelper extends AbstractFormFieldViewHelper
         }
 
         $this->tag->addAttribute('type', 'file');
+        $this->addConfiguredTagAttributes(['disabled', 'multiple', 'accept']);
         $name .= '[]';
         $this->tag->addAttribute('name', $name);
         $this->setErrorClassAttribute();
         return $this->tag->render();
+    }
+
+    protected function addConfiguredTagAttributes(array $attributeNames): void
+    {
+        foreach ($attributeNames as $attributeName) {
+            $value = $this->arguments[$attributeName] ?? null;
+            if ($value !== null && $value !== false && $value !== '') {
+                $this->tag->addAttribute($attributeName, (string)$value);
+            }
+        }
     }
 }

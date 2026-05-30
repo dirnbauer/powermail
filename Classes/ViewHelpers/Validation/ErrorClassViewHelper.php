@@ -6,8 +6,8 @@ namespace In2code\Powermail\ViewHelpers\Validation;
 
 use Doctrine\DBAL\DBALException;
 use In2code\Powermail\Domain\Model\Field;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Extbase\Error\Error;
-use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -29,7 +29,12 @@ class ErrorClassViewHelper extends AbstractViewHelper
     {
         /** @var Field $field */
         $field = $this->arguments['field'];
-        $validationResults = $this->getRequest()->getAttribute('extbase')->getOriginalRequestMappingResults();
+        $request = $this->getRequest();
+        if (!$request instanceof ServerRequestInterface || $request->getAttribute('extbase') === null) {
+            return '';
+        }
+
+        $validationResults = $request->getAttribute('extbase')->getOriginalRequestMappingResults();
         $errors = $validationResults->getFlattenedErrors();
         foreach ($errors as $error) {
             /** @var Error $singleError */
@@ -47,10 +52,13 @@ class ErrorClassViewHelper extends AbstractViewHelper
     /**
      * Shortcut for retrieving the request from the controller context
      *
-     * @return Request
+     * @return ServerRequestInterface|null
      */
-    protected function getRequest()
+    protected function getRequest(): ?ServerRequestInterface
     {
-        return $this->renderingContext->getRequest();
+        if ($this->renderingContext->hasAttribute(ServerRequestInterface::class)) {
+            return $this->renderingContext->getAttribute(ServerRequestInterface::class);
+        }
+        return null;
     }
 }
