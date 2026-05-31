@@ -2437,18 +2437,6 @@ parameters:
 			path: ../../Classes/Domain/Service/CountriesFromStaticInfoTablesService.php
 
 		-
-			message: '#^Call to an undefined method TYPO3\\CMS\\Core\\Mail\\MailMessage\:\:isSent\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Call to an undefined method TYPO3\\CMS\\Core\\Mail\\MailMessage\:\:send\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
 			message: '#^Cannot call method getFields\(\) on In2code\\Powermail\\Domain\\Model\\Form\|TYPO3\\CMS\\Extbase\\Persistence\\Generic\\LazyLoadingProxy\|null\.$#'
 			identifier: method.nonObject
 			count: 1
@@ -2511,12 +2499,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getSenderEmails\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:sendEmail\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
 
@@ -3001,18 +2983,6 @@ parameters:
 			path: ../../Classes/Domain/Service/Mail/SendMailService.php
 
 		-
-			message: '#^Call to an undefined method TYPO3\\CMS\\Core\\Mail\\MailMessage\:\:isSent\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
-			message: '#^Call to an undefined method TYPO3\\CMS\\Core\\Mail\\MailMessage\:\:send\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
 			message: '#^Cannot access offset ''BE'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -3183,12 +3153,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\Mail\\SendMailService\:\:prepareAndSend\(\) has parameter \$email with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\Mail\\SendMailService\:\:prepareAndSend\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Service/Mail/SendMailService.php
 
@@ -7193,24 +7157,6 @@ parameters:
 			identifier: missingType.iterableValue
 			count: 1
 			path: ../../Classes/Utility/LocalizationUtility.php
-
-		-
-			message: '#^Call to an undefined method TYPO3\\CMS\\Core\\Mail\\MailMessage\:\:isSent\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Utility/MailUtility.php
-
-		-
-			message: '#^Call to an undefined method TYPO3\\CMS\\Core\\Mail\\MailMessage\:\:send\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: ../../Classes/Utility/MailUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\MailUtility\:\:sendPlainMail\(\) should return bool but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Utility/MailUtility.php
 
 		-
 			message: '#^Method In2code\\Powermail\\Utility\\ObjectUtility\:\:getFilesArray\(\) return type has no value type specified in iterable type array\.$#'

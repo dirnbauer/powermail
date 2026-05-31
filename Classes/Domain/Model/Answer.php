@@ -28,11 +28,9 @@ class Answer extends AbstractEntity
     const VALUE_TYPE_PASSWORD = 4;
 
     /**
-     * Raw answer value as stored in the database. Multi-value answers are JSON encoded.
-     *
-     * @var string
+     * @var mixed
      */
-    protected string $value = '';
+    protected $value = '';
 
     /**
      * Use when password is hashed so that the originally entered value is available in the finishers
@@ -102,11 +100,11 @@ class Answer extends AbstractEntity
     /**
      * Sets the value
      */
-    public function setValue(string $value): Answer
+    public function setValue(mixed $value): Answer
     {
         $value = $this->convertToJson($value);
         $value = $this->convertToTimestamp($value);
-        $this->value = (string)$value;
+        $this->value = $value;
         return $this;
     }
 
