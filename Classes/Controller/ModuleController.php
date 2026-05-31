@@ -63,7 +63,6 @@ class ModuleController extends AbstractController
         $this->moduleTemplate = $this->moduleTemplateFactory->create($this->request);
         $this->moduleTemplate->setTitle('Powermail');
         $this->moduleTemplate->setFlashMessageQueue($this->getFlashMessageQueue());
-        $this->moduleTemplate->makeDocHeaderModuleMenu(['id' => $this->id]);
     }
 
     /**
@@ -74,6 +73,12 @@ class ModuleController extends AbstractController
         return (new ForwardResponse($forwardToAction))
             ->withControllerName('Module')
             ->withExtensionName('Powermail');
+    }
+
+    protected function renderModuleResponse(string $templateFileName): ResponseInterface
+    {
+        $this->moduleTemplate->makeDocHeaderModuleMenu(['id' => $this->id]);
+        return $this->moduleTemplate->renderResponse($templateFileName);
     }
 
     /**
@@ -116,8 +121,7 @@ class ModuleController extends AbstractController
             'activateXlsxExport' => $this->isPhpSpreadsheetInstalled,
         ]);
 
-        $this->moduleTemplate->makeDocHeaderModuleMenu(['id' => $this->id]);
-        return $this->moduleTemplate->renderResponse('Module/List');
+        return $this->renderModuleResponse('Module/List');
     }
 
     /**
@@ -205,7 +209,7 @@ class ModuleController extends AbstractController
                 'perPage' => ($this->settings['perPage'] ?? 10),
             ]
         );
-        return $this->moduleTemplate->renderResponse('Module/ReportingFormBe');
+        return $this->renderModuleResponse('Module/ReportingFormBe');
     }
 
     /**
@@ -231,7 +235,7 @@ class ModuleController extends AbstractController
                 'perPage' => ($this->settings['perPage'] ?? 10),
             ]
         );
-        return $this->moduleTemplate->renderResponse('Module/ReportingMarketingBe');
+        return $this->renderModuleResponse('Module/ReportingMarketingBe');
     }
 
     /**
@@ -244,8 +248,7 @@ class ModuleController extends AbstractController
         $forms = $this->formRepository->findAllInPidAndRootline($this->id);
         $this->moduleTemplate->assign('forms', $forms);
         $this->moduleTemplate->assign('pid', $this->id);
-        $this->moduleTemplate->makeDocHeaderModuleMenu(['id' => $this->id]);
-        return $this->moduleTemplate->renderResponse('Module/OverviewBe');
+        return $this->renderModuleResponse('Module/OverviewBe');
     }
 
     public function initializeCheckBeAction(): void
@@ -258,7 +261,7 @@ class ModuleController extends AbstractController
         $this->moduleTemplate->assign('pid', $this->id);
         $this->moduleTemplate->assign('settings', $this->settings['setup'] ?? []);
         $this->sendTestEmail($this->piVars['email'] ?? null);
-        return $this->moduleTemplate->renderResponse('Module/CheckBe');
+        return $this->renderModuleResponse('Module/CheckBe');
     }
 
     protected function sendTestEmail(?string $email = null): void
