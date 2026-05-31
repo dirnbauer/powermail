@@ -29,7 +29,7 @@ class PowermailConditionFunctionsProvider implements ExpressionFunctionProviderI
      * Check if pluginname is anywhere on this page with a new function for conditions: isPowermailOnCurrentPage()
      *
      * Example usages:
-     *      [isPowermailOnCurrentPage()] for tt_content.list_type=powermail_pi1 or
+     *      [isPowermailOnCurrentPage()] for tt_content.CType=powermail_pi1 or
      *      [isPowermailOnCurrentPage(['powermail_pi1', 'powermail_pi1'])] for both plugins
      */
     protected function isPowermailPluginOnCurrentPageFunction(): ExpressionFunction

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace In2code\Powermail\Update;
 
+use Doctrine\DBAL\Schema\Column;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\Restriction\DeletedRestriction;
@@ -38,6 +39,8 @@ class PowermailPluginUpdater implements UpgradeWizardInterface
 
     /** @var FlexFormService */
     protected object $flexFormService;
+
+    protected ?bool $legacyPluginColumnsExist = null;
 
     public function __construct()
     {
@@ -136,6 +139,10 @@ class PowermailPluginUpdater implements UpgradeWizardInterface
 
     protected function getMigrationRecords($list_type): array
     {
+        if (!$this->legacyPluginColumnsExist()) {
+            return [];
+        }
+
         $connectionPool = GeneralUtility::makeInstance(ConnectionPool::class);
         $queryBuilder = $connectionPool->getQueryBuilderForTable('tt_content');
         $queryBuilder->getRestrictions()->removeAll()->add(GeneralUtility::makeInstance(DeletedRestriction::class));
@@ -155,6 +162,27 @@ class PowermailPluginUpdater implements UpgradeWizardInterface
             )
             ->executeQuery()
             ->fetchAllAssociative();
+    }
+
+    protected function legacyPluginColumnsExist(): bool
+    {
+        if ($this->legacyPluginColumnsExist !== null) {
+            return $this->legacyPluginColumnsExist;
+        }
+
+        $schemaManager = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable('tt_content')
+            ->createSchemaManager();
+
+        $tableColumnNames = array_flip(
+            array_map(
+                static fn (Column $column): string => $column->getName(),
+                $schemaManager->listTableColumns('tt_content')
+            )
+        );
+
+        $this->legacyPluginColumnsExist = isset($tableColumnNames['CType'], $tableColumnNames['list_type']);
+        return $this->legacyPluginColumnsExist;
     }
 
     protected function getTargetListType(string $switchableControllerActions): string
