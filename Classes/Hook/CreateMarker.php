@@ -9,6 +9,7 @@ use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Model\Page;
 use In2code\Powermail\Domain\Service\GetNewMarkerNamesForFormService;
 use In2code\Powermail\Utility\DatabaseUtility;
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Backend\Utility\BackendUtility as BackendUtilityCore;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\Exception as ExceptionExtbaseObject;
@@ -69,7 +70,15 @@ class CreateMarker
         $this->table = $table;
         $this->uid = $uid;
         $this->properties = &$properties;
-        $this->data = (array)($GLOBALS['TYPO3_REQUEST']->getParsedBody()['data'] ?? $GLOBALS['TYPO3_REQUEST']->getQueryParams()['data'] ?? null);
+        $this->data = [];
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+        if ($request instanceof ServerRequestInterface) {
+            $parsedBody = $request->getParsedBody();
+            $this->data = (array)(is_array($parsedBody) ? ($parsedBody['data'] ?? null) : null);
+            if ($this->data === []) {
+                $this->data = (array)($request->getQueryParams()['data'] ?? null);
+            }
+        }
         $this->addExistingFields();
         $this->addNewFields();
     }
