@@ -21,7 +21,7 @@ class OrViewHelper extends AbstractViewHelper
     {
         $string = $this->arguments['string'];
         foreach ($this->arguments['array'] as $value) {
-            if (!empty($string) && $value) {
+            if (empty($string) && $value) {
                 return true;
             }
 

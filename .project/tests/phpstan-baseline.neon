@@ -849,18 +849,12 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to string\.$#'
 			identifier: cast.string
-			count: 3
+			count: 2
 			path: ../../Classes/Domain/Model/Answer.php
 
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Model\\Answer\:\:convertToJson\(\) has parameter \$value with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Model/Answer.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Model\\Answer\:\:getRawValue\(\) should return int\|string but returns mixed\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Model/Answer.php
 
@@ -879,12 +873,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Model\\Answer\:\:isTypeMultiple\(\) has parameter \$value with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Model/Answer.php
-
-		-
-			message: '#^Parameter \#1 \$json of function json_decode expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../../Classes/Domain/Model/Answer.php
 

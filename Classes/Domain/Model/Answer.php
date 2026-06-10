@@ -251,10 +251,8 @@ class Answer extends AbstractEntity
 
     /**
      * Convert string to timestamp for date fields (datepicker)
-     *
-     * @return int|string
      */
-    protected function convertToTimestamp(string $value)
+    protected function convertToTimestamp(string $value): string
     {
         if ($this->isTypeDateForDate($value)) {
             if (empty($this->translateFormat)) {
@@ -271,7 +269,7 @@ class Answer extends AbstractEntity
                     $date->setTime(0, 0);
                 }
 
-                $value = $date->getTimestamp();
+                $value = (string)$date->getTimestamp();
             } else {
                 try {
                     // fallback html5 date field - always Y-m-d H:i
@@ -286,7 +284,7 @@ class Answer extends AbstractEntity
                         $date->setTime(0, 0);
                     }
 
-                    $value = $date->getTimestamp();
+                    $value = (string)$date->getTimestamp();
                 }
             }
         }
