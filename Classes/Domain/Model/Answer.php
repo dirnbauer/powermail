@@ -28,7 +28,7 @@ class Answer extends AbstractEntity
     const VALUE_TYPE_PASSWORD = 4;
 
     /**
-     * @var mixed
+     * @var string
      */
     protected $value = '';
 
