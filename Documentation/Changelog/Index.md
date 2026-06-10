@@ -11,6 +11,38 @@ Releases with breaking changes are marked with !!!
 
 See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.md) for some details on breaking changes and how to handle them.
 
+## Fork changes (dirnbauer/powermail, branch `typo3-v14`)
+
+This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
+that are not part of an upstream release are tracked here.
+
+### Guard missing TYPO3 request in `CreateMarker` for CLI/MCP writes
+
+`In2code\Powermail\Hook\CreateMarker::initialize()` assumed that
+`$GLOBALS['TYPO3_REQUEST']` is always a PSR-7 request carrying a parsed body.
+During CLI- or MCP-driven `DataHandler` writes (e.g. seeders, scheduler tasks,
+the TYPO3 MCP server) there may be no request at all, or `getParsedBody()` may
+return `null` / an empty array. The unguarded access then raised a fatal error
+and aborted the write.
+
+The hook now defaults `$this->data` to an empty array and only reads request
+data when a `Psr\Http\Message\ServerRequestInterface` is present, falling back
+from the parsed body to the query params:
+
+```php
+$this->data = [];
+$request = $GLOBALS['TYPO3_REQUEST'] ?? null;
+if ($request instanceof ServerRequestInterface) {
+    $parsedBody = $request->getParsedBody();
+    $this->data = (array)(is_array($parsedBody) ? ($parsedBody['data'] ?? null) : null);
+    if ($this->data === []) {
+        $this->data = (array)($request->getQueryParams()['data'] ?? null);
+    }
+}
+```
+
+Marker autofill in the backend is unchanged; CLI/MCP writes no longer fatal.
+
 | Version         | Release Date | Description                                                                                                                                                                                                           |
 |-----------------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [!!!] 14.0.0    | 2026-05-29   | TYPO3 14.3+ only, PHP 8.3-8.5 support, TYPO3 13 support dropped, site sets are the supported configuration path, DDEV/PHPStan/tooling updated.                                                                        |
