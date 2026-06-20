@@ -5455,12 +5455,6 @@ parameters:
 			path: ../../Classes/Finisher/SendParametersFinisher.php
 
 		-
-			message: '#^Cannot access offset ''data'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: ../../Classes/Hook/CreateMarker.php
-
-		-
 			message: '#^Cannot access offset ''form'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -5487,18 +5481,6 @@ parameters:
 		-
 			message: '#^Cannot access offset int\|string on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Hook/CreateMarker.php
-
-		-
-			message: '#^Cannot call method getParsedBody\(\) on mixed\.$#'
-			identifier: method.nonObject
-			count: 1
-			path: ../../Classes/Hook/CreateMarker.php
-
-		-
-			message: '#^Cannot call method getQueryParams\(\) on mixed\.$#'
-			identifier: method.nonObject
 			count: 1
 			path: ../../Classes/Hook/CreateMarker.php
 
