@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-	<g fill="none" stroke-linecap="round" stroke-linejoin="round">
-		<path stroke="var(--icon-color-accent, #ff8700)" stroke-width="4" d="M14 50H8V8h30l10 10v14"/>
-		<path stroke="var(--icon-color-accent, #ff8700)" stroke-width="4" d="M38 8v10h10M18 34h6v6h-6z"/>
-		<path stroke="currentColor" stroke-width="4" d="M18 24h18M18 30h14"/>
-		<path stroke="currentColor" stroke-width="4" d="M32 36h24v16H32z"/>
-		<path stroke="var(--icon-color-accent, #ff8700)" stroke-width="4" d="m34 38 10 8 10-8"/>
-	</g>
+  <rect x="6" y="6" width="52" height="52" rx="10" fill="#f8fafc"/>
+  <rect x="6.75" y="6.75" width="50.5" height="50.5" rx="9.25" fill="none" stroke="#d0d7de" stroke-width="1.5"/>
+  <path d="M13 12h25l9 9v14H13z" fill="#1f2937"/>
+  <path d="M38 12v9h9" fill="#f8fafc"/>
+  <rect x="21" y="26" width="17" height="4" rx="2" fill="#f8fafc"/>
+  <rect x="21" y="34" width="11" height="4" rx="2" fill="#f8fafc"/>
+  <rect x="31" y="37" width="24" height="16" rx="2.5" fill="#1f2937"/>
+  <path fill="#ff8700" d="M34 40h18l-9 8z"/>
 </svg>
