@@ -7477,18 +7477,6 @@ parameters:
 			path: ../../Classes/Utility/StringUtility.php
 
 		-
-			message: '#^Binary operation "\." between mixed and string results in an error\.$#'
-			identifier: binaryOp.invalid
-			count: 2
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Cannot access offset non\-falsy\-string on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:getTemplateFolders\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

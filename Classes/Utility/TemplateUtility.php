@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace In2code\Powermail\Utility;
 
 use In2code\Powermail\Domain\Model\Mail;
+use In2code\Powermail\Fluid\RestrictedStringRenderer;
 use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -15,7 +16,6 @@ use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
  * Class TemplateUtility
- * @codeCoverageIgnore
  */
 class TemplateUtility
 {
@@ -23,6 +23,8 @@ class TemplateUtility
      *  Get absolute paths for templates with fallback
      *     Returns paths from *RootPaths and "hardcoded"
      *     paths pointing to the EXT:powermail-resources.
+     *
+     * @codeCoverageIgnore
      */
     public static function getTemplateFolders(string $part = 'template'): array
     {
@@ -54,6 +56,8 @@ class TemplateUtility
      *  Return path and filename for a file or path.
      *  Only the first existing file/path will be returned.
      *  respect *RootPaths
+     *
+     * @codeCoverageIgnore
      */
     public static function getTemplatePath(string $pathAndFilename, string $part = 'template'): string
     {
@@ -65,6 +69,8 @@ class TemplateUtility
      *  Return path and filename for one or many files/paths.
      *         Only existing files/paths will be returned.
      *         respect *RootPaths
+     *
+     * @codeCoverageIgnore
      */
     public static function getTemplatePaths(string $pathAndFilename, string $part = 'template'): array
     {
@@ -81,6 +87,8 @@ class TemplateUtility
 
     /**
      * Get a default Standalone view
+     *
+     * @codeCoverageIgnore
      */
     public static function getDefaultView(
         string $format = 'html',
@@ -104,6 +112,8 @@ class TemplateUtility
 
     /**
      * This functions renders the powermail_all Template (e.g. useage in Mails)
+     *
+     * @codeCoverageIgnore
      */
     public static function powermailAll(
         Mail $mail,
@@ -129,6 +139,10 @@ class TemplateUtility
     /**
      * Parse String with Fluid View
      *
+     * Only variables and the ViewHelpers configured in the extension configuration are evaluated -
+     * some of the parsed values can hold data that was submitted by a website visitor, which would
+     * otherwise allow arbitrary ViewHelper execution from an unauthenticated request.
+     *
      * @param array<string, mixed> $variables
      */
     public static function fluidParseString(string $string, array $variables = []): string
@@ -141,12 +155,6 @@ class TemplateUtility
             return $string;
         }
 
-        $view = self::getDefaultView();
-        if (!$view instanceof FluidViewAdapter) {
-            return $string;
-        }
-        $view->getRenderingContext()->getTemplatePaths()->setTemplateSource($string);
-        $view->assignMultiple($variables);
-        return $view->render();
+        return GeneralUtility::makeInstance(RestrictedStringRenderer::class)->render($string, $variables);
     }
 }
