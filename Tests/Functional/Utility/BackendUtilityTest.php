@@ -42,6 +42,10 @@ final class BackendUtilityTest extends FunctionalTestCase
      */
     private const PAGE_FOREIGN = 50;
 
+    protected array $coreExtensionsToLoad = [
+        'scheduler',
+    ];
+
     protected array $testExtensionsToLoad = [
         'in2code/powermail',
     ];

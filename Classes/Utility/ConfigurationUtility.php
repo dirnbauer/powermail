@@ -115,8 +115,11 @@ class ConfigurationUtility
         // intentionally empty value still means "allow nothing".
         $allowedViewHelpers = $extensionConfig['allowedViewHelpersInParsedStrings']
             ?? self::DEFAULT_ALLOWED_VIEWHELPERS_IN_PARSED_STRINGS;
+        if (!is_string($allowedViewHelpers)) {
+            $allowedViewHelpers = self::DEFAULT_ALLOWED_VIEWHELPERS_IN_PARSED_STRINGS;
+        }
 
-        return GeneralUtility::trimExplode(',', (string)$allowedViewHelpers, true);
+        return GeneralUtility::trimExplode(',', $allowedViewHelpers, true);
     }
 
     /**

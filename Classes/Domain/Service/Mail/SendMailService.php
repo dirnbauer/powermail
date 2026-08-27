@@ -475,6 +475,9 @@ class SendMailService
         }
 
         foreach ($this->getKeysAllowedToContainFluid() as $key) {
+            if (!is_string($email[$key] ?? null)) {
+                continue;
+            }
             $email[$key] = $this->parseWithFluid(
                 $email[$key],
                 $mailRepository->getVariablesWithMarkersFromMail($mail)

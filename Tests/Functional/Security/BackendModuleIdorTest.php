@@ -50,6 +50,10 @@ final class BackendModuleIdorTest extends FunctionalTestCase
      */
     private const MODULE_IDENTIFIER = 'powermail_list';
 
+    protected array $coreExtensionsToLoad = [
+        'scheduler',
+    ];
+
     protected array $testExtensionsToLoad = [
         'in2code/powermail',
     ];

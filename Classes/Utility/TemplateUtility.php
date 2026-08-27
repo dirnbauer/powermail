@@ -24,6 +24,7 @@ class TemplateUtility
      *     Returns paths from *RootPaths and "hardcoded"
      *     paths pointing to the EXT:powermail-resources.
      *
+     * @return list<string>
      * @codeCoverageIgnore
      */
     public static function getTemplateFolders(string $part = 'template'): array
@@ -33,8 +34,14 @@ class TemplateUtility
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK,
             'powermail'
         );
-        if (!empty($extbaseConfig['view'][$part . 'RootPaths'])) {
-            $templatePaths = $extbaseConfig['view'][$part . 'RootPaths'];
+        $viewConfig = $extbaseConfig['view'] ?? null;
+        $configuredRootPaths = is_array($viewConfig) ? ($viewConfig[$part . 'RootPaths'] ?? null) : null;
+        if (is_array($configuredRootPaths)) {
+            foreach ($configuredRootPaths as $priority => $configuredRootPath) {
+                if (is_string($configuredRootPath)) {
+                    $templatePaths[$priority] = $configuredRootPath;
+                }
+            }
             ksort($templatePaths, SORT_NUMERIC);
             $templatePaths = array_values($templatePaths);
         }
@@ -70,6 +77,7 @@ class TemplateUtility
      *         Only existing files/paths will be returned.
      *         respect *RootPaths
      *
+     * @return list<string>
      * @codeCoverageIgnore
      */
     public static function getTemplatePaths(string $pathAndFilename, string $part = 'template'): array

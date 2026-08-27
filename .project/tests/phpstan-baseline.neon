@@ -3199,12 +3199,6 @@ parameters:
 			path: ../../Classes/Domain/Service/Mail/SendMailService.php
 
 		-
-			message: '#^Parameter \#1 \$string of static method In2code\\Powermail\\Utility\\TemplateUtility\:\:fluidParseString\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/Domain/Service/Mail/SendMailService.php
-
-		-
 			message: '#^Parameter \#1 \$string of static method In2code\\Powermail\\Utility\\TypoScriptUtility\:\:overwriteValueFromTypoScript\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 7
@@ -4364,12 +4358,6 @@ parameters:
 
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShield\\RateLimitMethod\:\:getRestrictionValues\(\) should return array\<string\> but returns array\<string, mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Domain/Validator/SpamShield/RateLimitMethod.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Validator\\SpamShield\\RateLimitMethod\:\:getRestrictions\(\) should return array\<string\> but returns list\<mixed\>\.$#'
 			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Validator/SpamShield/RateLimitMethod.php
@@ -7477,50 +7465,8 @@ parameters:
 			path: ../../Classes/Utility/StringUtility.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:getTemplateFolders\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:getTemplatePath\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:getTemplatePaths\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Utility\\TemplateUtility\:\:powermailAll\(\) has parameter \$settings with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Parameter \#1 \$array of function array_unique expects an array of values castable to string, list given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Parameter \#1 \$array of function array_values expects array\<T\>, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Parameter \#1 \$array of function ksort expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/Utility/TemplateUtility.php
-
-		-
-			message: '#^Parameter \#1 \$fileName of static method TYPO3\\CMS\\Core\\Utility\\GeneralUtility\:\:getFileAbsFileName\(\) expects string, mixed given\.$#'
-			identifier: argument.type
 			count: 1
 			path: ../../Classes/Utility/TemplateUtility.php
 

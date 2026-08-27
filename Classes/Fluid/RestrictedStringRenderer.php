@@ -113,7 +113,7 @@ class RestrictedStringRenderer
     {
         $replacements = [];
         foreach ($variables as $marker => $value) {
-            if (is_array($value) || is_object($value)) {
+            if (!is_scalar($value) && $value !== null) {
                 continue;
             }
 
