@@ -16,6 +16,18 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
 that are not part of an upstream release are tracked here.
 
+### 14.0.1 security release
+
+- Requires TYPO3 14.3.6 or newer.
+- Enforces backend page access before mail records are read or changed.
+- Restricts configurable Fluid rendering to the documented safe ViewHelpers
+  and neutralizes template modifiers that could invoke arbitrary objects.
+- Keeps the TYPO3 v14 Fluid 5 integration covered by unit and functional
+  security tests.
+- Replaces the abandoned BrowserKit test driver and removes the abandoned
+  bundled Selenium server dependency.
+- Gives PHPStan enough memory to complete the TYPO3 v14 analysis reliably.
+
 ### Guard missing TYPO3 request in `CreateMarker` for CLI/MCP writes
 
 `In2code\Powermail\Hook\CreateMarker::initialize()` assumed that
