@@ -218,10 +218,11 @@ class ValidationDataAttributeViewHelper extends AbstractValidationViewHelper
                  * javascript example: <input type="text" data-powermail-pattern="[a-zA-Z]." />
                  */
             case 5:
+                $pattern = $this->getLettersOnlyPattern();
                 if ($this->isNativeValidationEnabled()) {
-                    $additionalAttributes['pattern'] = '[A-Za-z]+';
+                    $additionalAttributes['pattern'] = $pattern;
                 } elseif ($this->isClientValidationEnabled()) {
-                    $additionalAttributes['data-powermail-pattern'] = '[a-zA-Z]+';
+                    $additionalAttributes['data-powermail-pattern'] = $pattern;
                 }
 
                 break;
@@ -354,6 +355,17 @@ class ValidationDataAttributeViewHelper extends AbstractValidationViewHelper
         }
 
         return $additionalAttributes;
+    }
+
+    protected function getLettersOnlyPattern(): string
+    {
+        $validationSettings = $this->settings['validation'] ?? null;
+        if (!is_array($validationSettings)) {
+            return '^[A-Za-z]+$';
+        }
+
+        $pattern = $validationSettings['lettersOnlyPattern'] ?? null;
+        return is_string($pattern) && $pattern !== '' ? $pattern : '^[A-Za-z]+$';
     }
 
     /**

@@ -16,6 +16,23 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
 that are not part of an upstream release are tracked here.
 
+### 14.0.2 upstream synchronization release
+
+- Merges the complete upstream `typo3-v13` history through commit `e953761c`
+  from 2026-08-27 while retaining the TYPO3 14 compatibility layer.
+- Includes upstream database-schema compatibility fixes and the update wizard
+  for existing `NULL` text values.
+- Prevents the spam shield from reaching the Extbase 101-iteration limit.
+- Exposes the PSR-7 request on `SendMailServiceCreateEmailBodyEvent`.
+- Makes the letters-only validation pattern configurable and keeps the site-set
+  definition in sync.
+- Keeps captcha text inside image bounds and handles missing background/font
+  resources explicitly.
+- Removes obsolete `getIdentifier()` implementations from upgrade wizards and
+  handles `NULL` plugin FlexForm values.
+- Retains and verifies both security fixes from upstream 13.2.1: restricted
+  Fluid ViewHelper execution and backend page-access enforcement.
+
 ### 14.0.1 security release
 
 - Requires TYPO3 14.3.6 or newer.

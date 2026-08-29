@@ -4,12 +4,14 @@ declare(strict_types=1);
 namespace In2code\Powermail\Domain\Validator;
 
 use Exception;
+use In2code\Powermail\Domain\Model\Form;
 use In2code\Powermail\Domain\Model\Mail;
 use In2code\Powermail\Domain\Validator\SpamShield\AbstractMethod;
 use In2code\Powermail\Domain\Validator\SpamShield\Breaker\BreakerRunner;
 use In2code\Powermail\Domain\Validator\SpamShield\MethodInterface;
 use In2code\Powermail\Exception\ClassDoesNotExistException;
 use In2code\Powermail\Exception\InterfaceNotImplementedException;
+use In2code\Powermail\Exception\SpamDetectedException;
 use In2code\Powermail\Utility\BasicFileUtility;
 use In2code\Powermail\Utility\ConfigurationUtility;
 use In2code\Powermail\Utility\FrontendUtility;
@@ -20,6 +22,7 @@ use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExis
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Error\Result;
 use TYPO3\CMS\Extbase\Mvc\Exception\InvalidExtensionNameException;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Fluid\View\FluidViewAdapter;
 
 /**
@@ -65,9 +68,10 @@ class SpamShieldValidator extends AbstractValidator
     }
 
     /**
+     * @param Mail $mail
      * @throws InvalidExtensionNameException
      */
-    protected function isValid($mail): void
+    protected function isValid(mixed $mail): void
     {
         $this->initFlexform();
         $this->runAllSpamMethods($mail);
@@ -78,6 +82,19 @@ class SpamShieldValidator extends AbstractValidator
             $this->setValidState(false);
             $this->sendSpamNotificationMail($mail);
             $this->logSpamNotification($mail);
+            $form = $mail->getForm();
+            if ($form instanceof LazyLoadingProxy) {
+                $form = $form->_loadRealInstance();
+            }
+            $formUid = $form instanceof Form ? $form->getUid() : 0;
+            $formPid = $form instanceof Form ? $form->getPid() : 0;
+            throw new SpamDetectedException(
+                'Powermail: Spam tolerance limit reached;'
+                . '; value: ' . $this->getCalculatedSpamFactor(true)
+                . '; form: ' . $formUid
+                . ' on page: ' . $formPid,
+                1784729722
+            );
         }
     }
 

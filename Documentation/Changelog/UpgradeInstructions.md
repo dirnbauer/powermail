@@ -1,18 +1,14 @@
 # Upgrade Instructions and breaking changes
 
-## Version 14.0.0
+## Version 14.0.2
 
-### Breaking Changes
+Version 14.0.2 synchronizes the TYPO3 14 fork with all upstream changes through the
+`typo3-v13` commit from 2026-08-27. No additional migration is required. The upstream
+security fixes remain adapted to TYPO3 14 and the event
+`SendMailServiceCreateEmailBodyEvent` now exposes the current PSR-7 request through
+`getRequest()`.
 
-#### TYPO3 14 only
-
-Powermail 14 supports TYPO3 14.3 and newer only. TYPO3 13 support was removed completely. Use the powermail 13 branch
-for TYPO3 13 projects.
-
-#### Site sets
-
-TYPO3 14 installations should configure powermail through site sets. Remove static TypoScript template inclusions and
-add the matching powermail site set(s) to your site configuration.
+## Version 14.0.1
 
 ### ViewHelpers in values that powermail parses with Fluid
 
@@ -43,6 +39,20 @@ TypoScript instead.
 
 Templates and RTE fields are not affected. Arbitrary ViewHelpers and own namespaces keep working
 there, see `Documentation/ForAdministrators/BestPractice/Templates.md`.
+
+## Version 14.0.0
+
+### Breaking Changes
+
+#### TYPO3 14 only
+
+Powermail 14 supports TYPO3 14.3 and newer only. TYPO3 13 support was removed completely. Use the powermail 13 branch
+for TYPO3 13 projects.
+
+#### Site sets
+
+TYPO3 14 installations should configure powermail through site sets. Remove static TypoScript template inclusions and
+add the matching powermail site set(s) to your site configuration.
 
 ## Version 13.0.0
 
