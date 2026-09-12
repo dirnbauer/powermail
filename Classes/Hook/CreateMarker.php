@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace In2code\Powermail\Hook;
 
 use Doctrine\DBAL\DBALException;

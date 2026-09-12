@@ -16,6 +16,20 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
 that are not part of an upstream release are tracked here.
 
+### 14.0.3 — 2026-09-12: merged upstream 13.3.0
+
+- Merges upstream `typo3-v13` through the 13.3.0 release (commit `1e66d181`)
+  while retaining the TYPO3 14 compatibility layer.
+- Prevents memory exhaustion on mail export by streaming mails in batches
+  (`BatchedMailQueryResult`, upstream `a03cf4c5`).
+- Upstream 13.3.0 feature and bugfix release (`46de0166`): fast mail export
+  documentation and settings, `Mail` model read-only guards.
+- Respects the pagination setting in `ModuleController` (`265e783c`).
+- Prevents the "undefined global variable" error in CLI context in
+  `CreateMarker` (`535863a1`); the fork's PSR-7 request guard is kept.
+- Fixes the server-side `lettersOnly` validation, which still used the old
+  faulty pattern (`1e66d181`).
+
 ### 14.0.2 upstream synchronization release
 
 - Merges the complete upstream `typo3-v13` history through commit `e953761c`

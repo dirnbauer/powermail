@@ -103,6 +103,12 @@ parameters:
 			path: ../../Classes/Command/ExportCommand.php
 
 		-
+			message: '#^Parameter \#3 \$piVars of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:findAllInPidBatched\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../Classes/Command/ExportCommand.php
+
+		-
 			message: '#^Argument of an invalid type mixed supplied for foreach, only iterables are supported\.$#'
 			identifier: foreach.nonIterable
 			count: 1
@@ -313,6 +319,12 @@ parameters:
 			path: ../../Classes/Controller/ModuleController.php
 
 		-
+			message: '#^Cannot access offset ''batchSize'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/Controller/ModuleController.php
+
+		-
 			message: '#^Cannot access offset ''fields'' on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 2
@@ -345,7 +357,7 @@ parameters:
 		-
 			message: '#^Cannot cast mixed to int\.$#'
 			identifier: cast.int
-			count: 4
+			count: 5
 			path: ../../Classes/Controller/ModuleController.php
 
 		-
@@ -379,7 +391,19 @@ parameters:
 			path: ../../Classes/Controller/ModuleController.php
 
 		-
+			message: '#^Parameter \#2 \$settings of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:findAllInPidBatched\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 2
+			path: ../../Classes/Controller/ModuleController.php
+
+		-
 			message: '#^Parameter \#2 \$string of static method TYPO3\\CMS\\Core\\Utility\\GeneralUtility\:\:trimExplode\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: ../../Classes/Controller/ModuleController.php
+
+		-
+			message: '#^Parameter \#3 \$piVars of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:findAllInPidBatched\(\) expects array\<string, mixed\>, array given\.$#'
 			identifier: argument.type
 			count: 2
 			path: ../../Classes/Controller/ModuleController.php
@@ -1687,12 +1711,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^Call to an undefined method object\:\:getUid\(\)\.$#'
-			identifier: method.notFound
-			count: 2
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^Call to an undefined method object\:\:getValue\(\)\.$#'
 			identifier: method.notFound
 			count: 2
@@ -1897,24 +1915,6 @@ parameters:
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:makeUniqueQuery\(\) has parameter \$query with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface but does not specify its types\: T$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:makeUniqueQuery\(\) has parameter \$result with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:makeUniqueQuery\(\) return type with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../Classes/Domain/Repository/MailRepository.php
-
-		-
 			message: '#^PHPDoc tag @throws with type In2code\\Powermail\\Domain\\Repository\\DBALException is not subtype of Throwable$#'
 			identifier: throws.notThrowable
 			count: 1
@@ -1928,6 +1928,12 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$array of function array_reverse expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../Classes/Domain/Repository/MailRepository.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_unique expects an array of values castable to string, list\<mixed\> given\.$#'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
@@ -2002,6 +2008,24 @@ parameters:
 			message: '#^Parameter \#2 \$order of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:getSorting\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 2
+			path: ../../Classes/Domain/Repository/MailRepository.php
+
+		-
+			message: '#^Parameter \#2 \$piVars of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:restrictQueryToUniqueMails\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../Classes/Domain/Repository/MailRepository.php
+
+		-
+			message: '#^Parameter \#2 \$settings of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:createQueryForFindAllInPid\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../Classes/Domain/Repository/MailRepository.php
+
+		-
+			message: '#^Parameter \#3 \$piVars of method In2code\\Powermail\\Domain\\Repository\\MailRepository\:\:createQueryForFindAllInPid\(\) expects array\<string, mixed\>, array given\.$#'
+			identifier: argument.type
+			count: 1
 			path: ../../Classes/Domain/Repository/MailRepository.php
 
 		-
@@ -2407,20 +2431,8 @@ parameters:
 			path: ../../Classes/Domain/Service/ExportService.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:__construct\(\) has parameter \$mails with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getAdditionalProperties\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getDefaultFieldListFromFirstMail\(\) has parameter \$mails with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
 
@@ -2437,13 +2449,7 @@ parameters:
 			path: ../../Classes/Domain/Service/ExportService.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getMails\(\) return type with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getMails\(\) should return TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but returns TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QueryResult\|null\.$#'
+			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:getMails\(\) should return TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface\<int, In2code\\Powermail\\Domain\\Model\\Mail\> but returns TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface\<int, In2code\\Powermail\\Domain\\Model\\Mail\>\|null\.$#'
 			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
@@ -2469,12 +2475,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:setFieldList\(\) has parameter \$fieldList with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Service\\ExportService\:\:setMails\(\) has parameter \$mails with generic interface TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface but does not specify its types\: TKey, TValue$#'
-			identifier: missingType.generics
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
 
@@ -2511,18 +2511,6 @@ parameters:
 		-
 			message: '#^Property In2code\\Powermail\\Domain\\Service\\ExportService\:\:\$fieldList type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Property In2code\\Powermail\\Domain\\Service\\ExportService\:\:\$mails \(TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QueryResult\|null\) does not accept TYPO3\\CMS\\Extbase\\Persistence\\QueryResultInterface\|null\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: ../../Classes/Domain/Service/ExportService.php
-
-		-
-			message: '#^Property In2code\\Powermail\\Domain\\Service\\ExportService\:\:\$mails with generic class TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QueryResult does not specify its types\: TValue$#'
-			identifier: missingType.generics
 			count: 1
 			path: ../../Classes/Domain/Service/ExportService.php
 
@@ -3829,6 +3817,12 @@ parameters:
 			path: ../../Classes/Domain/Validator/InputValidator.php
 
 		-
+			message: '#^Cannot access offset ''lettersOnlyPattern'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: ../../Classes/Domain/Validator/InputValidator.php
+
+		-
 			message: '#^Cannot access offset int\<min, \-1\>\|int\<11, max\> on mixed\.$#'
 			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
@@ -3913,12 +3907,6 @@ parameters:
 			path: ../../Classes/Domain/Validator/InputValidator.php
 
 		-
-			message: '#^Parameter \#1 \$value of method In2code\\Powermail\\Domain\\Validator\\StringValidator\:\:validateLettersOnly\(\) expects string, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: ../../Classes/Domain/Validator/InputValidator.php
-
-		-
 			message: '#^Parameter \#1 \$value of method In2code\\Powermail\\Domain\\Validator\\StringValidator\:\:validateMaxNumber\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -3939,7 +3927,7 @@ parameters:
 		-
 			message: '#^Parameter \#1 \$value of method In2code\\Powermail\\Domain\\Validator\\StringValidator\:\:validatePattern\(\) expects string, mixed given\.$#'
 			identifier: argument.type
-			count: 1
+			count: 2
 			path: ../../Classes/Domain/Validator/InputValidator.php
 
 		-
@@ -3956,6 +3944,12 @@ parameters:
 
 		-
 			message: '#^Parameter \#1 \$value of method In2code\\Powermail\\Domain\\Validator\\StringValidator\:\:validateUrl\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: ../../Classes/Domain/Validator/InputValidator.php
+
+		-
+			message: '#^Parameter \#2 \$configuration of method In2code\\Powermail\\Domain\\Validator\\StringValidator\:\:validatePattern\(\) expects string, mixed given\.$#'
 			identifier: argument.type
 			count: 1
 			path: ../../Classes/Domain/Validator/InputValidator.php

@@ -1,5 +1,12 @@
 # Upgrade Instructions and breaking changes
 
+## Version 14.0.3
+
+Version 14.0.3 merges upstream powermail 13.3.0 (the `typo3-v13` branch through
+2026-09-12) into the TYPO3 14 fork. No additional migration is required. The new
+batched mail export is documented under "Fast mail export" in the administrator
+best-practice section.
+
 ## Version 14.0.2
 
 Version 14.0.2 synchronizes the TYPO3 14 fork with all upstream changes through the
