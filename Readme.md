@@ -16,6 +16,10 @@ What differs from upstream:
   plugin lookups for the v14 content types, answer-value validation, request guards for CLI and MCP writes, and the
   13.2.1 security fixes adapted to v14. The fork's own changes are listed under "Fork changes" in
   [the changelog](/Documentation/Changelog/Index.md).
+- **No TYPO3 14.3 deprecations** (since 14.0.3.2): no `ext_tables.php`, per-column `searchable` instead of the
+  removed TCA `searchFields`, the plugin FlexForm passed to `registerPlugin()` instead of `addPiFlexFormValue()`,
+  Extbase validation attributes on the action parameter, upgrade wizards on the EXT:core interfaces, and the table
+  garbage collection configured in TCA. `Tests/Functional/Configuration/Typo3V14RegistrationTest.php` guards this.
 - TYPO3 14.3.6 or newer and PHP 8.3 to 8.5 only; Composer installation only (no `ext_emconf.php`).
 - PHPStan runs at level max with a baseline (upstream: level 8 with a baseline).
 
@@ -24,12 +28,12 @@ Installing the fork:
 ```json
 {
     "repositories": [{"type": "vcs", "url": "https://github.com/dirnbauer/powermail.git"}],
-    "require": {"in2code/powermail": "~14.0.3.1"}
+    "require": {"in2code/powermail": "~14.0.3.2"}
 }
 ```
 
-Release tags have four parts, `<line>.<revision>`: `14.0.3.1` is the first fork revision of the 14.0.3 line. Require
-them with `~` and all four parts. `~14.0.3.1` accepts later fork revisions such as `14.0.3.2`, but never a three-part
+Release tags have four parts, `<line>.<revision>`: `14.0.3.2` is the second fork revision of the 14.0.3 line. Require
+them with `~` and all four parts. `~14.0.3.2` accepts later fork revisions such as `14.0.3.3`, but never a three-part
 upstream tag. `^14.0` would accept any upstream 14.x tag that ever reached this repository, even one without the
 fork's changes. A build suffix does not help either: Composer drops `+webcon.1`, so a `14.0.4+webcon.1` tag would
 be treated as the same version as upstream's `14.0.4`.

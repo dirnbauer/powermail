@@ -16,6 +16,46 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
 that are not part of an upstream release are tracked here.
 
+### 14.0.3.2 — 2026-09-23: no TYPO3 14.3 deprecations
+
+Powermail no longer triggers any TYPO3 14.3 deprecation. In the lab that was
+43 entries while booting and building TCA, 34 more on a cold Extbase
+reflection cache and one whenever the table garbage collection task read its
+tables; the fork's own functional suite reported 4. All are 0 now, and
+behaviour is unchanged.
+
+- Removes `ext_tables.php` (deprecated in 14.3). The backend live search
+  commands `#mail:` and `#form:` are registered in `ext_localconf.php`; the
+  "Table garbage collection" scheduler task gets the mail and answer tables
+  (`tstamp`, 30 days) through `taskOptions` in
+  `Configuration/TCA/Overrides/tx_scheduler_task.php` instead of the deprecated
+  `$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']` option.
+- Replaces the removed TCA `ctrl.searchFields` with per-column
+  `'searchable' => false`, so the backend search still covers exactly the
+  former lists (forms, pages, fields: `title`; mails: `sender_mail`,
+  `sender_name`, `subject`, `body`).
+- Passes the plugin FlexForm to `ExtensionUtility::registerPlugin()` instead of
+  calling the deprecated `addPiFlexFormValue()` (twice). `configurePlugin()`
+  no longer passes the default plugin type.
+- Puts the `#[Validate]` attributes of `FormController::confirmationAction()`
+  and `createAction()` on the `$mail` parameter with named arguments, and
+  moves the model attributes (`Lazy`, `Validate`) from the deprecated
+  `Extbase\Annotation` namespace to `Extbase\Attribute`.
+- Upgrade wizards implement the EXT:core interfaces
+  (`TYPO3\CMS\Core\Attribute\UpgradeWizard`, `TYPO3\CMS\Core\Upgrades\*`), so
+  they no longer depend on EXT:install.
+- Fixes three calls to APIs that TYPO3 14 removed, which the PHPStan baseline
+  had hidden: file download links in the backend mail list used
+  `GeneralUtility::hmac()` (now `HashService` with SHA3-256), marker
+  generation used `CharsetConverter::specCharsToASCII()` (now
+  `utf8_char_mapping()`, the same mapping), and the TER date in the backend
+  check used `QueryBuilder::execute()` (now `executeQuery()`).
+- PHPStan baseline: 11 entries fewer (the removed-API errors, plus five that
+  PHPStan 2.2.15 no longer reports); `phpstan/phpstan` now requires `^2.2.15`.
+- New functional test `Typo3V14RegistrationTest` guards all of the above.
+- Developer docs: the "Add new field properties" example uses
+  `Configuration/TCA/Overrides/` instead of `ext_tables.php`.
+
 ### 14.0.3.1 — 2026-09-23: fork housekeeping
 
 - Fork releases are now tagged `<line>.<revision>` (four parts) and are meant
