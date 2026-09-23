@@ -24,8 +24,8 @@ class Page extends AbstractEntity
 
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\In2code\Powermail\Domain\Model\Field>
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
+    #[\TYPO3\CMS\Extbase\Attribute\ORM\Lazy]
     protected $fields;
 
     protected ?Form $form = null;

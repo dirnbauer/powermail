@@ -173,16 +173,21 @@ final class Typo3V14RegistrationTest extends FunctionalTestCase
                 new ClassSchema(BackendUser::class),
                 new ClassSchema(BackendUserGroup::class),
                 new ClassSchema(Mail::class),
+                new ClassSchema(Form::class),
+                new ClassSchema(Page::class),
             ],
             $schemas
         );
 
         self::assertSame([], $deprecations);
-        [$backendUser, $backendUserGroup, $mail] = $schemas;
+        [$backendUser, $backendUserGroup, $mail, $form, $page] = $schemas;
         self::assertSame('NotEmpty', $backendUser->getProperty('userName')->getValidators()[0]['name'] ?? null);
         self::assertSame('NotEmpty', $backendUserGroup->getProperty('title')->getValidators()[0]['name'] ?? null);
         self::assertTrue($mail->getProperty('feuser')->isLazy());
         self::assertTrue($mail->getProperty('answers')->isLazy());
+        // TYPO3 14 reads only attributes: the doc-comment @Lazy annotations these two carried were ignored.
+        self::assertTrue($form->getProperty('pages')->isLazy());
+        self::assertTrue($page->getProperty('fields')->isLazy());
     }
 
     #[Test]

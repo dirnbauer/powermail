@@ -1,0 +1,18 @@
+"pages"
+,"uid","pid","title","doktype","deleted","hidden"
+,1,0,"Forms",254,0,0
+
+"tx_powermail_domain_model_form"
+,"uid","pid","title","pages","deleted","hidden"
+,1,1,"Lazy relations form","2",0,0
+
+"tx_powermail_domain_model_page"
+,"uid","pid","form","title","fields","sorting","deleted","hidden"
+,11,1,1,"Page two",1,2,0,0
+,12,1,1,"Page one",2,1,0,0
+
+"tx_powermail_domain_model_field"
+,"uid","pid","page","title","type","marker","sorting","deleted","hidden"
+,101,1,12,"First name","input","firstname",1,0,0
+,102,1,12,"Email","input","email",2,0,0
+,103,1,11,"Message","textarea","message",1,0,0
