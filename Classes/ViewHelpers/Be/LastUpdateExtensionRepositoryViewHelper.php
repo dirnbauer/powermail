@@ -40,7 +40,7 @@ class LastUpdateExtensionRepositoryViewHelper extends AbstractViewHelper
         $queryBuilder->select('*')->from(self::TABLE_NAME);
         $tableExists = true;
         try {
-            $queryBuilder->execute();
+            $queryBuilder->executeQuery();
         } catch (Throwable $throwable) {
             unset($throwable);
             $tableExists = false;
