@@ -1,28 +1,21 @@
 <?php
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') || die();
 
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:powermail/Configuration/FlexForms/FlexformPi1.xml',
-    'powermail_pi1'
-);
-
+/**
+ * The FlexForm data structure is passed to registerPlugin(), which stores it in
+ * types.powermail_pi1.columnsOverrides.pi_flexform.config.ds (TYPO3 v14 replacement for addPiFlexFormValue())
+ */
 ExtensionUtility::registerPlugin(
     'powermail',
     'Pi1',
     'LLL:EXT:powermail/Resources/Private/Language/locallang_mod.xlf:powermail_pi1.title',
     'plugin-powermail-form',
-    'powermail'
-);
-
-ExtensionManagementUtility::addPiFlexFormValue(
-    '*',
-    'FILE:EXT:powermail/Configuration/FlexForms/FlexformPi1.xml',
-    'powermail_pi1'
+    'powermail',
+    '',
+    'FILE:EXT:powermail/Configuration/FlexForms/FlexformPi1.xml'
 );
 
 $GLOBALS['TCA']['tt_content']['types']['powermail_pi1']['showitem'] = '
