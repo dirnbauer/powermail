@@ -8,9 +8,9 @@ use In2code\Powermail\Domain\Model\Answer;
 use In2code\Powermail\Domain\Model\Mail;
 use In2code\Powermail\Utility\DatabaseUtility;
 use Throwable;
-use TYPO3\CMS\Install\Attribute\UpgradeWizard;
-use TYPO3\CMS\Install\Updates\DatabaseUpdatedPrerequisite;
-use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
+use TYPO3\CMS\Core\Attribute\UpgradeWizard;
+use TYPO3\CMS\Core\Upgrades\DatabaseUpdatedPrerequisite;
+use TYPO3\CMS\Core\Upgrades\UpgradeWizardInterface;
 
 /**
  * Class PowermailLanguageUpdateWizard
