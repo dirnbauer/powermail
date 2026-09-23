@@ -26,8 +26,7 @@ call_user_func(function () {
         ],
         [
             \In2code\Powermail\Controller\FormController::class => $uncachedFormActions
-        ],
-        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+        ]
     );
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -38,8 +37,7 @@ call_user_func(function () {
         ],
         [
             \In2code\Powermail\Controller\FormController::class => 'marketing'
-        ],
-        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+        ]
     );
 
     /**
@@ -78,6 +76,14 @@ call_user_func(function () {
         'priority' => 50,
         'class' => \In2code\Powermail\Tca\ShowFormNoteEditForm::class,
     ];
+
+    /**
+     * Search with TYPO3 backend search
+     *      search for an email: "#mail:senderemail"
+     *      search for a form: "#form:contactform"
+     */
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['livesearch']['mail'] = \In2code\Powermail\Domain\Model\Mail::TABLE_NAME;
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['livesearch']['form'] = \In2code\Powermail\Domain\Model\Form::TABLE_NAME;
 
     /**
      * Feature toggle

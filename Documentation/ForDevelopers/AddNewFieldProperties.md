@@ -34,18 +34,24 @@ CREATE TABLE tx_powermail_domain_model_field (
 ```
 
 
-EXT:powermailextended/ext_tables.php:
+EXT:powermailextended/Configuration/TCA/Overrides/sys_template.php (or ship a site set instead):
 
 ```php
 <?php
-/**
- * Include Static TypoScript
- */
+defined('TYPO3') || die();
+
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-    $_EXTKEY,
+    'powermailextended',
     'Configuration/TypoScript',
     'Powermail Addition (after Powermail Template)'
 );
+```
+
+EXT:powermailextended/Configuration/TCA/Overrides/tx_powermail_domain_model_field.php:
+
+```php
+<?php
+defined('TYPO3') || die();
 
 /**
  * extend powermail fields tx_powermail_domain_model_field
@@ -79,6 +85,8 @@ $tempColumns = [
     'after:own_marker_select'
 );
 ```
+
+TYPO3 14.3 deprecates `ext_tables.php`, so TCA changes belong in `Configuration/TCA/Overrides/`.
 
 
 EXT:powermailextended/Configuration/TypoScript/setup.txt:
