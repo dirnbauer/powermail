@@ -1135,12 +1135,6 @@ parameters:
 			path: ../../Classes/Domain/Model/Form.php
 
 		-
-			message: '#^Method In2code\\Powermail\\Domain\\Model\\Form\:\:getPagesByUid\(\) should return array but returns array\<int\|string\|null, mixed\>\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Domain/Model/Form.php
-
-		-
 			message: '#^Method In2code\\Powermail\\Domain\\Model\\Form\:\:setPages\(\) has parameter \$pages with generic class TYPO3\\CMS\\Extbase\\Persistence\\ObjectStorage but does not specify its types\: TEntity$#'
 			identifier: missingType.generics
 			count: 1
@@ -1185,12 +1179,6 @@ parameters:
 		-
 			message: '#^Property In2code\\Powermail\\Domain\\Model\\Form\:\:\$pagesByTitle type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Model/Form.php
-
-		-
-			message: '#^Property In2code\\Powermail\\Domain\\Model\\Form\:\:\$pagesByUid \(array\) does not accept array\<int\<1, max\>\|null, object\>\.$#'
-			identifier: assign.propertyType
 			count: 1
 			path: ../../Classes/Domain/Model/Form.php
 
@@ -1333,12 +1321,6 @@ parameters:
 			path: ../../Classes/Domain/Model/Mail.php
 
 		-
-			message: '#^Property In2code\\Powermail\\Domain\\Model\\Mail\:\:\$answersByFieldUid \(array\) does not accept array\<int\<1, max\>\|null, object\>\.$#'
-			identifier: assign.propertyType
-			count: 1
-			path: ../../Classes/Domain/Model/Mail.php
-
-		-
 			message: '#^Property In2code\\Powermail\\Domain\\Model\\Mail\:\:\$answersByFieldUid type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1
@@ -1365,12 +1347,6 @@ parameters:
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Model\\Page\:\:getFieldsByFieldUid\(\) return type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Model/Page.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Model\\Page\:\:getFieldsByFieldUid\(\) should return array but returns array\<int\|string\|null, mixed\>\.$#'
-			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Model/Page.php
 
@@ -1413,12 +1389,6 @@ parameters:
 		-
 			message: '#^Property In2code\\Powermail\\Domain\\Model\\Page\:\:\$fieldsByFieldMarker type has no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Model/Page.php
-
-		-
-			message: '#^Property In2code\\Powermail\\Domain\\Model\\Page\:\:\$fieldsByFieldUid \(array\) does not accept array\<int\<1, max\>\|null, object\>\.$#'
-			identifier: assign.propertyType
 			count: 1
 			path: ../../Classes/Domain/Model/Page.php
 
