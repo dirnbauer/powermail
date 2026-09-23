@@ -3,6 +3,40 @@
 Powermail is a well-known, editor-friendly, powerful and easy to use mailform extension for TYPO3 with a lots of
 features (spam prevention, marketing information, optin, ajax submit, diagram analysis, etc...).
 
+## Fork notes
+
+This is webconsulting's fork of [in2code-de/powermail](https://github.com/in2code-de/powermail). in2code has not
+published a TYPO3 14 release, so this fork ports the upstream `typo3-v13` line to TYPO3 14.3 LTS. The Composer
+package name stays `in2code/powermail`.
+
+What differs from upstream:
+
+- **Branch `typo3-v14`** is upstream `typo3-v13` (currently 13.3.0 plus its later bugfixes) merged into the TYPO3 14
+  port: Extbase controller attributes, `ViewFactory` rendering, Fluid 5 ViewHelper signatures, the v14 SVG icon family,
+  plugin lookups for the v14 content types, answer-value validation, request guards for CLI and MCP writes, and the
+  13.2.1 security fixes adapted to v14. The fork's own changes are listed under "Fork changes" in
+  [the changelog](/Documentation/Changelog/Index.md).
+- TYPO3 14.3.6 or newer and PHP 8.3 to 8.5 only; Composer installation only (no `ext_emconf.php`).
+- PHPStan runs at level max with a baseline (upstream: level 8 with a baseline).
+
+Installing the fork:
+
+```json
+{
+    "repositories": [{"type": "vcs", "url": "https://github.com/dirnbauer/powermail.git"}],
+    "require": {"in2code/powermail": "~14.0.3.1"}
+}
+```
+
+Release tags have four parts, `<line>.<revision>`: `14.0.3.1` is the first fork revision of the 14.0.3 line. Require
+them with `~` and all four parts. `~14.0.3.1` accepts later fork revisions such as `14.0.3.2`, but never a three-part
+upstream tag. `^14.0` would accept any upstream 14.x tag that ever reached this repository, even one without the
+fork's changes. A build suffix does not help either: Composer drops `+webcon.1`, so a `14.0.4+webcon.1` tag would
+be treated as the same version as upstream's `14.0.4`.
+
+Syncing upstream: the `upstream` remote is fetched with `--no-tags`, so upstream tags never reach this repository.
+New upstream commits are merged, never rebased, because Composer consumers pin commits of this branch.
+
 ## 1. Documentation overview
 
 * [Introduction](/Documentation/Index.md)
