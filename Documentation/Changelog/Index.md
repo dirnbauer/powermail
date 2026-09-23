@@ -16,6 +16,17 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
 that are not part of an upstream release are tracked here.
 
+### 14.0.3.1 — 2026-09-23: fork housekeeping
+
+- Fork releases are now tagged `<line>.<revision>` (four parts) and are meant
+  to be required as `~14.0.3.1`, a constraint that no upstream tag can
+  satisfy. See "Fork notes" in the README.
+- Upstream `typo3-v13` has no commits since the 14.0.3 merge (`1e66d181`), and
+  the only other upstream branch with new work, `bugfix/empty-flexform`, is
+  already contained as `e953761c`.
+- Removes the point-in-time upgrade reports from May 2026 (`UpgradeReports/`).
+- No code changes.
+
 ### 14.0.3 — 2026-09-12: merged upstream 13.3.0
 
 - Merges upstream `typo3-v13` through the 13.3.0 release (commit `1e66d181`)
