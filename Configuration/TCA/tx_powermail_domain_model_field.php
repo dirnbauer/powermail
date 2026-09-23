@@ -256,7 +256,6 @@ $fieldsTca = [
         'typeicon_classes' => [
             'default' => 'record-powermail-field',
         ],
-        'searchFields' => 'title',
     ],
     'interface' => [
     ],
@@ -399,6 +398,7 @@ $fieldsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:LGL.versionLabel',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'max' => 255,
             ],
@@ -416,6 +416,7 @@ $fieldsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
@@ -425,6 +426,7 @@ $fieldsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
@@ -566,6 +568,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.settings',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '32',
                 'rows' => '5',
                 'default' => '',
@@ -577,6 +580,7 @@ $fieldsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:' . Field::TABLE_NAME . '.path',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'eval' => 'trim',
             ],
@@ -599,6 +603,7 @@ $fieldsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:' . Field::TABLE_NAME . '.text',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '32',
                 'rows' => '5',
                 'default' => '',
@@ -638,6 +643,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.mandatory_text',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '26',
                 'rows' => '1',
                 'default' => '',
@@ -816,6 +822,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.validationConfiguration',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
             ],
             'displayCond' => 'FIELD:validation:>:5',
@@ -826,6 +833,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.prefill_value',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '26',
                 'rows' => '2',
                 'default' => '',
@@ -837,6 +845,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.placeholder',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '26',
                 'rows' => '2',
                 'default' => '',
@@ -848,6 +857,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.placeholder_repeat',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '26',
                 'rows' => '2',
                 'default' => '',
@@ -929,6 +939,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.create_from_typoscript',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'eval' => 'trim',
                 'default' => '',
@@ -1028,6 +1039,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.own_marker',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'eval' => 'trim,alphanum_x,lower,nospace',
             ],
@@ -1051,6 +1063,7 @@ $fieldsTca = [
                 Field::TABLE_NAME . '.description',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '26',
                 'rows' => '2',
                 'eval' => 'trim',
@@ -1083,6 +1096,7 @@ $fieldsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:' . Field::TABLE_NAME . '.autocomplete_section',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'eval' => 'trim',
                 'max' => '100',
                 'behaviour' => [

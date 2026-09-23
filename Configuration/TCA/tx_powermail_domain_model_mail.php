@@ -40,7 +40,6 @@ $mailsTca = [
         'typeicon_classes' => [
             'default' => 'record-powermail-mail',
         ],
-        'searchFields' => 'sender_mail, sender_name, subject, body',
     ],
     'interface' => [
     ],
@@ -87,6 +86,7 @@ $mailsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:LGL.versionLabel',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'max' => 255,
             ],
@@ -104,6 +104,7 @@ $mailsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
@@ -113,6 +114,7 @@ $mailsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
@@ -121,6 +123,7 @@ $mailsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:' . Mail::TABLE_NAME . '.crdate',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
                 'readOnly' => 1,
             ],
@@ -131,6 +134,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.receiver_mail',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '30',
                 'rows' => '5',
             ],
@@ -241,6 +245,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.spam_factor',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 13,
                 'eval' => 'trim',
                 'readOnly' => 1,
@@ -251,6 +256,7 @@ $mailsTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:' . Mail::TABLE_NAME . '.time',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'size' => 13,
                 'default' => 0,
                 'readOnly' => 1,
@@ -262,6 +268,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.sender_ip',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'eval' => 'trim',
                 'readOnly' => 1,
@@ -274,6 +281,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.user_agent',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'eval' => 'trim',
                 'readOnly' => 1,
@@ -286,6 +294,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.marketing_referer_domain',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'readOnly' => 1,
                 'default' => '',
@@ -297,6 +306,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.marketing_referer',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '30',
                 'rows' => '5',
                 'readOnly' => 1,
@@ -309,6 +319,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.marketing_country',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'readOnly' => 1,
                 'default' => '',
@@ -341,6 +352,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.marketing_browser_language',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'readOnly' => 1,
                 'default' => '',
@@ -352,6 +364,7 @@ $mailsTca = [
                 Mail::TABLE_NAME . '.marketing_page_funnel',
             'config' => [
                 'type' => 'text',
+                'searchable' => false,
                 'cols' => '30',
                 'rows' => '5',
                 'readOnly' => 1,

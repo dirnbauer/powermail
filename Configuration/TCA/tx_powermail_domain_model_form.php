@@ -29,7 +29,6 @@ $formsTca = [
         'typeicon_classes' => [
             'default' => 'record-powermail-form',
         ],
-        'searchFields' => 'title',
     ],
     'interface' => [
     ],
@@ -77,6 +76,7 @@ $formsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'max' => 255,
             ],
@@ -94,6 +94,7 @@ $formsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
@@ -103,6 +104,7 @@ $formsTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],

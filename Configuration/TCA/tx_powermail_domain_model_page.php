@@ -29,7 +29,6 @@ $pagesTca = [
         'typeicon_classes' => [
             'default' => 'record-powermail-page',
         ],
-        'searchFields' => 'title',
     ],
     'interface' => [
     ],
@@ -76,6 +75,7 @@ $pagesTca = [
             'label' => 'LLL:EXT:powermail/Resources/Private/Language/locallang_db.xlf:LGL.versionLabel',
             'config' => [
                 'type' => 'input',
+                'searchable' => false,
                 'size' => 30,
                 'max' => 255,
             ],
@@ -93,6 +93,7 @@ $pagesTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
@@ -102,6 +103,7 @@ $pagesTca = [
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'datetime',
+                'searchable' => false,
                 'default' => 0,
             ],
         ],
