@@ -15,7 +15,7 @@
 
 namespace In2code\Powermail\Domain\Model;
 
-use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Attribute as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class BackendUser extends AbstractEntity
@@ -23,7 +23,7 @@ class BackendUser extends AbstractEntity
     /**
      * @var string
      */
-    #[Extbase\Validate(['validator' => 'NotEmpty'])]
+    #[Extbase\Validate(validator: 'NotEmpty')]
     protected $userName = '';
 
     /**
