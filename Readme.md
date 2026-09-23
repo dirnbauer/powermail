@@ -20,6 +20,9 @@ What differs from upstream:
   removed TCA `searchFields`, the plugin FlexForm passed to `registerPlugin()` instead of `addPiFlexFormValue()`,
   Extbase validation attributes on the action parameter, upgrade wizards on the EXT:core interfaces, and the table
   garbage collection configured in TCA. `Tests/Functional/Configuration/Typo3V14RegistrationTest.php` guards this.
+- **Lazy form pages and page fields** (since 14.0.3.3): `Form::$pages` and `Page::$fields` use the v14
+  `#[Extbase\Attribute\ORM\Lazy]` attribute. Upstream still uses the doc-comment annotation, which works on TYPO3 13
+  but is ignored by TYPO3 14, where both relations would load eagerly.
 - TYPO3 14.3.6 or newer and PHP 8.3 to 8.5 only; Composer installation only (no `ext_emconf.php`).
 - PHPStan runs at level max with a baseline (upstream: level 8 with a baseline).
 
@@ -28,12 +31,12 @@ Installing the fork:
 ```json
 {
     "repositories": [{"type": "vcs", "url": "https://github.com/dirnbauer/powermail.git"}],
-    "require": {"in2code/powermail": "~14.0.3.2"}
+    "require": {"in2code/powermail": "~14.0.3.3"}
 }
 ```
 
-Release tags have four parts, `<line>.<revision>`: `14.0.3.2` is the second fork revision of the 14.0.3 line. Require
-them with `~` and all four parts. `~14.0.3.2` accepts later fork revisions such as `14.0.3.3`, but never a three-part
+Release tags have four parts, `<line>.<revision>`: `14.0.3.3` is the third fork revision of the 14.0.3 line. Require
+them with `~` and all four parts. `~14.0.3.3` accepts later fork revisions such as `14.0.3.4`, but never a three-part
 upstream tag. `^14.0` would accept any upstream 14.x tag that ever reached this repository, even one without the
 fork's changes. A build suffix does not help either: Composer drops `+webcon.1`, so a `14.0.4+webcon.1` tag would
 be treated as the same version as upstream's `14.0.4`.

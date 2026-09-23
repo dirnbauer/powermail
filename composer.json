@@ -116,7 +116,7 @@
 			"cms-package-dir": "{$vendor-dir}/typo3/cms",
 			"web-dir": ".build/public",
 			"extension-key": "powermail",
-			"version": "14.0.3.2",
+			"version": "14.0.3.3",
 			"Package": {
 				"providesPackages": {}
 			},

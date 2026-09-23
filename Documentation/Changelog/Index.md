@@ -16,6 +16,34 @@ See [Upgrade instructions and breaking changes](/Changelog/UpgradeInstructions.m
 This fork carries TYPO3 14 compatibility fixes on top of upstream. Changes
 that are not part of an upstream release are tracked here.
 
+### 14.0.3.3 — 2026-09-23: lazy form pages and page fields
+
+`Form::$pages` and `Page::$fields` are loaded lazily again, as upstream
+intends. Both carried the doc-comment annotation
+`@TYPO3\CMS\Extbase\Annotation\ORM\Lazy`, which TYPO3 14 ignores (Extbase
+reads only PHP attributes), so since the v14 port every form loaded all of its
+pages and every page all of its fields. Both now use
+`#[TYPO3\CMS\Extbase\Attribute\ORM\Lazy]`, like `Mail::$feuser` and
+`Mail::$answers`.
+
+- The relations are `LazyObjectStorage` objects until first used. Iterating
+  over them, `count()`, `toArray()` and the `getPagesByUid()`/`getPagesByTitle()`/
+  `getFieldsByFieldMarker()`/`getFieldsByFieldUid()` helpers behave as before;
+  `count()` before the first iteration runs a COUNT query instead of loading
+  the records. Nothing in powermail, powermail_cond, friendlycaptcha or
+  webcon_jev needed to change: all of them iterate or count.
+- Lab check: the rendered form markup of six EN/DE demo forms and the
+  powermail_cond answers of the Jev forms are byte-identical before and after.
+  Query counts: the backend mail list went from 97 to 75-81 queries, the form
+  overview (which counts and lists the pages of every form) from 77 to 86, and
+  rendering a form that shows every page and field needs 2 to 5 more (e.g. 30
+  to 32), because a template that counts the pages before iterating them now
+  costs a COUNT query. Render times did not change measurably.
+- `Typo3V14RegistrationTest` asserts both properties are lazy; the new
+  functional test `LazyRelationsTest` checks that loading a form leaves its
+  pages and fields unloaded and that iteration, `count()` and the helpers see
+  the records in sorting order.
+
 ### 14.0.3.2 — 2026-09-23: no TYPO3 14.3 deprecations
 
 Powermail no longer triggers any TYPO3 14.3 deprecation. In the lab that was
