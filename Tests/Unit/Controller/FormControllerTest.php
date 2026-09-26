@@ -42,9 +42,10 @@ class FormControllerTest extends UnitTestCase
         $listenerProviderMock = $this->getMockBuilder(ListenerProviderInterface::class)->getMock();
         $eventDispatcher = new EventDispatcher($listenerProviderMock);
 
+        // The translation lookup reads the database; unit tests decide its answer themselves.
         $this->generalValidatorMock = $this->getAccessibleMock(
             FormController::class,
-            null,
+            ['getDefaultLanguageFormUids'],
             [
                 new FormRepository(),
                 new FieldRepository(),
@@ -163,6 +164,52 @@ class FormControllerTest extends UnitTestCase
         } catch (Exception $e) {
             self::fail('An exception was thrown when it should not have been: ' . $e->getMessage());
         }
+    }
+
+    /**
+     * @test
+     * @covers ::forwardIfFormParamsDoNotMatch
+     */
+    public function aTranslatedPluginAcceptsTheFormItTranslates(): void
+    {
+        // A German plugin names the translation (1075); the form it renders posts the original's
+        // uid (1074), because Extbase gives a translated record its default-language uid.
+        $this->setDefaultControllerProperties(['mail' => ['form' => '1074']]);
+        $this->generalValidatorMock->_set('settings', ['main' => ['form' => '1075']]);
+        $this->generalValidatorMock->method('getDefaultLanguageFormUids')->with([1075])->willReturn([1074]);
+
+        self::assertFalse($this->generalValidatorMock->_call('forwardIfFormParamsDoNotMatch'));
+    }
+
+    /**
+     * @test
+     * @covers ::forwardIfFormParamsDoNotMatch
+     */
+    public function aTranslatedPluginStillRefusesAnUnrelatedForm(): void
+    {
+        $this->setDefaultControllerProperties(['mail' => ['form' => '9']]);
+        $this->generalValidatorMock->_set('settings', ['main' => ['form' => '1075']]);
+        $this->generalValidatorMock->method('getDefaultLanguageFormUids')->willReturn([1074]);
+
+        self::expectException(\TYPO3\CMS\Core\Http\PropagateResponseException::class);
+        $this->generalValidatorMock->_call('forwardIfFormParamsDoNotMatch');
+    }
+
+    /**
+     * @test
+     * @covers ::forwardIfFormParamsDoNotMatchForOptinConfirm
+     */
+    public function aTranslatedPluginConfirmsTheOptinOfTheFormItTranslates(): void
+    {
+        TestingHelper::setDefaultConstants();
+        $this->generalValidatorMock->_set('settings', ['main' => ['form' => '1075']]);
+        $this->generalValidatorMock->method('getDefaultLanguageFormUids')->willReturn([1074]);
+        $form = new Form();
+        $form->_setProperty('uid', 1074);
+        $mail = new Mail();
+        $mail->setForm($form);
+
+        self::assertFalse($this->generalValidatorMock->_call('forwardIfFormParamsDoNotMatchForOptinConfirm', $mail));
     }
 
     public static function forwardIfMailParamEmptyDataProvider(): array

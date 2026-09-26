@@ -53,6 +53,8 @@ use Psr\Http\Message\ResponseInterface;
 use Throwable;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
+use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Error\Http\BadRequestException;
 use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
@@ -509,12 +511,54 @@ class FormController extends AbstractController
             }
 
             $formsToContent = GeneralUtility::intExplode(',', ($this->settings['main']['form'] ?? ''));
-            if (!($formUid === null || in_array($formUid, $formsToContent, false))) {
+            if (!($formUid === null
+                || in_array($formUid, $formsToContent, false)
+                || (is_numeric($formUid) && in_array((int)$formUid, $this->getDefaultLanguageFormUids($formsToContent), true)))
+            ) {
                 $response = (new ForwardResponse('form'))->withArguments($this->request->getArguments());
                 throw new PropagateResponseException($response);
             }
         }
         return false;
+    }
+
+    /**
+     * The default-language forms that the given form records translate.
+     *
+     * A translated plugin names its form by the uid of the translation, but the form it renders -
+     * and so the form a visitor submits - reports the uid of the original, because Extbase gives a
+     * translated record the uid of its default-language record. Compared uid for uid, every
+     * submission on a translated page was sent back to the form: nothing saved, no error, status 200.
+     * The originals of the configured translations therefore count as configured, too.
+     *
+     * @param array<int, int> $formUids
+     * @return list<int>
+     */
+    protected function getDefaultLanguageFormUids(array $formUids): array
+    {
+        $formUids = array_values(array_filter($formUids, static fn (int $uid): bool => $uid > 0));
+        if ($formUids === []) {
+            return [];
+        }
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(Form::TABLE_NAME);
+        $parents = $queryBuilder
+            ->select('l10n_parent')
+            ->from(Form::TABLE_NAME)
+            ->where(
+                $queryBuilder->expr()->in('uid', $queryBuilder->createNamedParameter($formUids, Connection::PARAM_INT_ARRAY)),
+                $queryBuilder->expr()->gt('l10n_parent', $queryBuilder->createNamedParameter(0, Connection::PARAM_INT))
+            )
+            ->executeQuery()
+            ->fetchFirstColumn();
+
+        $uids = [];
+        foreach ($parents as $parent) {
+            if (is_numeric($parent)) {
+                $uids[] = (int)$parent;
+            }
+        }
+        return $uids;
     }
 
     /**
@@ -538,7 +582,10 @@ class FormController extends AbstractController
     {
         if ($mail instanceof \In2code\Powermail\Domain\Model\Mail) {
             $formsToContent = GeneralUtility::intExplode(',', $this->settings['main']['form']);
-            if (!in_array($mail->getForm()->getUid(), $formsToContent)) {
+            $formUid = $mail->getForm()->getUid();
+            if (!in_array($formUid, $formsToContent)
+                && !in_array((int)$formUid, $this->getDefaultLanguageFormUids($formsToContent), true)
+            ) {
                 $response = new ForwardResponse('form');
                 throw new PropagateResponseException($response);
             }
