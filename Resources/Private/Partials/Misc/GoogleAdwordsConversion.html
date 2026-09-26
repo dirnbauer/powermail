@@ -1,4 +1,11 @@
-<f:if condition="{settings.marketing.googleAdwords._enable}">
+<f:comment>
+	Only when the constant resolved to 1. Its value comes from
+	plugin.tx_powermail.settings.marketing.enable, which only the Marketing set
+	defines; a site with just the Main set keeps the unreplaced constant text in
+	place, a non-empty string is true, and the snippet went out with raw
+	placeholders - a JavaScript syntax error on every thank-you page.
+</f:comment>
+<f:if condition="{settings.marketing.googleAdwords._enable} == 1">
 	<script type="text/javascript">
 		var google_conversion_id = {settings.marketing.googleAdwords.google_conversion_id};
 		var google_conversion_language = "{settings.marketing.googleAdwords.google_conversion_language}";
