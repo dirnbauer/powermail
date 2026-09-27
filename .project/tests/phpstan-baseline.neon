@@ -2007,7 +2007,7 @@ parameters:
 		-
 			message: '#^Call to an undefined method TYPO3\\CMS\\Extbase\\Persistence\\QueryInterface\<TYPO3\\CMS\\Extbase\\DomainObject\\DomainObjectInterface\>\:\:statement\(\)\.$#'
 			identifier: method.notFound
-			count: 4
+			count: 3
 			path: ../../Classes/Domain/Repository/PageRepository.php
 
 		-
@@ -2049,7 +2049,7 @@ parameters:
 		-
 			message: '#^Cannot call method execute\(\) on mixed\.$#'
 			identifier: method.nonObject
-			count: 4
+			count: 3
 			path: ../../Classes/Domain/Repository/PageRepository.php
 
 		-
@@ -2066,18 +2066,6 @@ parameters:
 
 		-
 			message: '#^Method In2code\\Powermail\\Domain\\Repository\\PageRepository\:\:getPageNameFromUid\(\) should return string but returns mixed\.$#'
-			identifier: return.type
-			count: 1
-			path: ../../Classes/Domain/Repository/PageRepository.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\PageRepository\:\:getPagesWithContentRelatedToForm\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: ../../Classes/Domain/Repository/PageRepository.php
-
-		-
-			message: '#^Method In2code\\Powermail\\Domain\\Repository\\PageRepository\:\:getPagesWithContentRelatedToForm\(\) should return array but returns mixed\.$#'
 			identifier: return.type
 			count: 1
 			path: ../../Classes/Domain/Repository/PageRepository.php

@@ -1,0 +1,12 @@
+"pages"
+,"uid","pid","title","doktype","deleted","hidden"
+,1,0,"Root",1,0,0
+,2,1,"Saved in the backend",1,0,0
+,3,1,"Written by a seeder",1,0,0
+,4,1,"Written on one line",1,0,0
+,5,1,"Two plugins",1,0,0
+,6,1,"Two forms in one plugin",1,0,0
+,7,1,"Another form",1,0,0
+,8,1,"The uid in another field",1,0,0
+,9,1,"Deleted plugin",1,0,0
+,10,1,"Deleted page",1,1,0
